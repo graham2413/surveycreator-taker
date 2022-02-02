@@ -7,4 +7,4 @@ Available Times:
 Ahmed: Monday and Friday and weekends
 Nored: Afternoons and weekends
 Graham:  Whenever
-Colin:  ??
+Colin:  Monday Wednesday and Friday all day, and weekends should be fine
