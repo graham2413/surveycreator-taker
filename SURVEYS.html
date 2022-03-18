@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: rgb(233, 231, 227);
+        }
+
+        .header {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            background-color: rgb(223, 223, 231);
+            text-align: center;
+            padding: 14px 16px;
+            font-size: 25px;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: rgb(7, 6, 6);
+            overflow: auto;
+        }
+
+        .navbar a {
+            float: left;
+            padding: 12px;
+            color: white;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .navbar a:hover {
+            background-color: rgb(67, 100, 206);
+        }
+
+        .active {
+            background-color: #3503c0;
+        }
+
+        .searchbar {
+            float: left;
+            padding: 6px;
+            border: none;
+            font-size: 17px;
+        }
+
+        .button {
+            background-color: #040a04;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 15px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .navbar .logout {
+            float: right;
+            padding-right: 8px;
+        }
+
+        @media screen and (max-width: 800px) {
+            .navbar a {
+                float: none;
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <span>
+            SurveyCorps
+        </span>
+    </header>
+
+    <nav class="navbar">
+        <a href="HOME.html">
+            <i class="fa fa-fw fa-home"></i>Home</a>
+        <a href="SURVEYS.html" class="active">
+            <i class="fa fa-fw fa-search"></i>Surveys</a>
+        <a href="ACCOUNTS.html">
+            <i class="fa fa-fw fa-user"></i>Accounts</a>
+        <a href="HELP.html">
+            <i class="fa fa-fw fa-user"></i>Help</a>
+        <div class="logout">
+            <a href="">
+                Logout
+            </a>
+        </div>
+
+    </nav>
+
+    <section>
+        <a href="" class="button">Create Survey</a>
+    </section>
+
+    <h2>Survey Results</h2>
+    <section>Table of results goes here</section>
+
+    <h2>Search Surveys</h2>
+    <section class="searchbar">
+        <input type="text" placeholder="Search..">
+    </section>
+
+</body>
+
+</html>
