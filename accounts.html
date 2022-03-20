@@ -3,8 +3,8 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Home</title>
-    <style>
+    <title>Accounts</title>
+   <style>
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
@@ -46,24 +46,11 @@
             padding-right: 8px;
         }
 
-        .createdSurveys {
+        .searchbar {
             float: left;
-            border-style: solid;
-            padding-left: 20px;
-            padding-right: 10px;
-        }
-
-        .takenSurveys {
-            float: left;
-            border-style: solid;
-            padding-left: 20px;
-            padding-right: 10px;
-        }
-
-        .accountInfo {
-            float: right;
-            padding-top: 10px;
-            border-style: double;
+            padding: 6px;
+            border: none;
+            font-size: 17px;
         }
 
         @media screen and (max-width: 800px) {
@@ -79,16 +66,16 @@
 
     <header class="header">
         <span>
-            **Insert small image/icon here** SurveyCorps
+            SurveyCorps
         </span>
     </header>
 
     <nav class="navbar">
-        <a href="home.html"class="active">
+        <a href="home.html">
             <i class="fa fa-fw fa-home"></i>Home</a>
         <a href="surveys.html">
             <i class="fa fa-fw fa-search"></i>Surveys</a>
-        <a href="accounts.html">
+        <a href="accounts.html" class="active">
             <i class="fa fa-fw fa-user"></i>Accounts</a>
         <a href="help.html">
             <i class="fa fa-fw fa-user"></i>Help</a>
@@ -99,47 +86,10 @@
         </div>
     </nav>
 
-    <section class="accountInfo">
-        <div>
-            Account:
-            <span class="bar">
-                <input type="text" placeholder="AccountName">
-            </span>
-        </div>
-        <div>
-            Date:
-            <span class="bar">
-                <input type="text" placeholder="Date">
-            </span>
-        </div>
-        <div>
-            Surveys Taken:
-            <span class="bar">
-                <input type="text" placeholder="Date">
-            </span>
-        </div>
-        <div>
-            Surveys Created:
-            <span class="bar">
-                <input type="text" placeholder="Date">
-            </span>
-        </div>
-        <p>***line up and replace with info from database once set up.</p>
-    </section>
-
-    <section class="createdSurveys">
-        <h2>Recently Created Surveys</h2>
-        <div>
-            Table Goes Here
-        </div>
-    </section>
-
-    <section class="takenSurveys">
-        <h2>Recently Taken Surveys</h2>
-        <div>
-            Table Goes Here
-        </div>
-    </section>
+    <h2>Search Users</h2>
+    <div class="searchbar">
+        <input type="text" placeholder="Search..">
+    </div>
 
 </body>
 
