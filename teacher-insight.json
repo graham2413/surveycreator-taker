@@ -1,0 +1,44 @@
+{
+"Users":{
+        "creatersandtakers":{
+            "fakeUser":{
+                    "email": "email@email.com",
+                     "friendsList":{
+                        "UID":"UID of a friend",
+                        "UID":"UID of another friend"
+                     },
+                     "fullName":"Full Name",
+                     "UID":"User's UID",
+                     "lastLogin":"date and time here",
+                     "surveysCreated":{
+                           
+                        "surveyID":{
+                                "questions":{
+                                "questionID":{
+                                        "questionType":"type here",
+                                        "questionInput":"Input question here, may be multiple inputs which would create an array here"
+                                },
+                                "questionID":{
+                                        "questionType":"type here",
+                                        "questionInput":"Input question here, may be multiple inputs which would create an array here"
+                                }
+                        }
+                        },
+                        "surveyID":{
+                                "questions":{
+                                        "questionID":{
+                                                "questionType":"type here",
+                                                "questionInput":"Input question here, may be multiple inputs which would create an array here"
+                                        },
+                                        "questionID":{
+                                                "questionType":"type here",
+                                                "questionInput":"Input question here, may be multiple inputs which would create an array here"
+                                        }
+                                }
+                        }
+
+                     }
+}
+}
+}
+}

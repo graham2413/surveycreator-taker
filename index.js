@@ -11,8 +11,8 @@ var firebaseConfig = {
 
   firebase.initializeApp(firebaseConfig);
 
-  const auth = firebase.auth()
-  const database = firebase.database()
+  const auth = firebase.auth();
+  const database = firebase.database();
   
   // Set up our register function
   function register () {
@@ -35,25 +35,31 @@ var firebaseConfig = {
     // Move on with Auth
     auth.createUserWithEmailAndPassword(email, password)
     .then(function() {
-      // Declare user variable
-      var user = auth.currentUser
-  
+
+      
       // Add this user to Firebase Database
       var database_ref = database.ref()
   
       // Create User data
-      var user_data = {
+      var userData = {
         email : email,
         full_name : full_name,
         last_login : Date.now(),
         friendsList: 0,
         surveysCreated: 0
       }
+      console.log(auth.currentUser.uid);
   
       // Push to Firebase Database
-      database_ref.child('Users/creatersandtakers/' + user.uid).set(user_data)
+      try{
+      database_ref.child('Users/creatersandtakers/' + auth.currentUser.uid).set(userData);
+    }
+
+      catch(error){
+        alert(error);
+      }
   
-      // DOne
+      // Done
       alert('User Created!')
 
       auth.signInWithEmailAndPassword(email, password).then(() => { location.href = 'home.html' })
@@ -61,7 +67,6 @@ var firebaseConfig = {
     })
     .catch(function(error) {
       // Firebase will use this to alert of its errors
-      var error_code = error.code
       var error_message = error.message
   
       alert(error_message)
