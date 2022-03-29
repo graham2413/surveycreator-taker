@@ -2,6 +2,25 @@ header{
     text-align: center;
 }
 
+.surveyNameDiv{
+  text-align: center;
+}
+
+/* text for title */
+.surveyNameDiv input[type=text]{
+  width: 25%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the text for title input gets focus, do something */
+.surveyNameDiv input[type=text]:focus{
+  background-color: #ddd;
+  outline: none;
+}
+
 #totalQ{
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
@@ -21,6 +40,8 @@ header{
     margin-right: auto;
 }
 
+
+
 /*Style for button that opens form*/
 .open-button{
   background-color: #555;
@@ -29,6 +50,8 @@ header{
   border: none;
   cursor: pointer;
   opacity: 0.8;
+  display: block;
+  margin: 0 auto;
 
 }
 
@@ -36,11 +59,6 @@ header{
 .QuestionMake {
     display: none;
     border: 3px solid #f1f1f1;
-    
-    /*position:fixed;
-    bottom: 0;
-    right: 15px;
-    z-index: 9;*/
 }
   
   /* Add styles to the form container */
@@ -65,7 +83,7 @@ header{
     outline: none;
 }
   
-  /* Set a style for the save question button */
+  /* Set a style for the add question button */
 .form-container .btn {
     background-color: #04AA6D;
     color: white;
@@ -83,8 +101,18 @@ header{
 }
   
   /* Add some hover effects to buttons */
-.form-container .btn:hover, .open-button:hover {
+.form-container .btn:hover, .open-button:hover, #subSurvey:hover {
     opacity: 1;
 }
 
+#subSurvey{
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  display: block;
+  margin: 0 auto;
+}
 
