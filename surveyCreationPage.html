@@ -19,10 +19,10 @@
 
     <!--Show number of questions made and each one down a list. EX: Q1: (Whatever the question is), <br> Q2: (Whatever the question is)-->
     <section class = "QuestionShow" id = "totalQ">
-        <label>Number of Questions Created: </label>
+        <label>Number of Questions Created: </label> <label id="numQs">0</label>
     </section>
     <section class="QuestionShow" id="questionProduce">
-        <label id="label1">No questions yet! (Question number will appear here!)</label> <label id="label2">Question will appear here!</label>
+        <label id="label1">No questions yet!</label> <ol id="questionList"></ol>
     </section>
     
 
@@ -44,6 +44,7 @@
             <label for="qType"><b>What Type of Question is This?</b></label>
             <select name="qType" id="qType" onchange="typeSelectOn(this)">
                 <option value="none" selected disabled hidden>Select an Option</option>
+                <option value="freeResponse">Free Response</option>
                 <option value="multChoice">Multiple Choice</option>
                 <option value="aggDisagg">Agree/Disagree</option>
                 <option value="yesNo">Yes/No</option>
@@ -89,7 +90,7 @@
 
 
             <!--Button to add question to total-->
-            <button type="submit" class="btn">Add Question</button>
+            <button type="submit" class="btn" onclick="qIncrement()">Add Question</button>
             <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
         </form>
     </div>
