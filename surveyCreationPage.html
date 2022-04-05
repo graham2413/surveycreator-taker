@@ -28,10 +28,10 @@
 
         <!--Show number of questions made and each one down a list. EX: Q1: (Whatever the question is), <br> Q2: (Whatever the question is)-->
         <section class = "QuestionShow" id = "totalQ">
-            <label>Number of Questions Created: </label>
+            <label>Questions Created: </label>
         </section>
         <section class="QuestionShow" id="questionProduce">
-            <label id="label1">No questions yet! (Question number will appear here!)</label> <label id="label2">Question will appear here!</label>
+            <label id="label1">No questions yet!</label> <ol id="questionList"></ol>
         </section>
         
 
@@ -39,11 +39,11 @@
         <br>
 
         <!--Create question-->
-        <button class="open-button" onclick="openForm()">Create Survey Question</button>
+        <button class="open-button" onclick="createSingleQuestion()">Create Survey Question</button>
 
         <div class="QuestionMake" id="surveyForm">
             <form action="/action_page.php" class="form-container">
-                <h1>Question Creator</h1>
+                <h1 id="questionNum">Question Creator</h1>
             
                 <!--USER TYPES IN QUESTION HERE-->
                 <label for="question"><b>What is the Question?</b></label>
@@ -63,8 +63,8 @@
                 <!--WILL ONLY SHOW WHEN MULTIPLE CHOICE OPTION SELECTED-->
                 <div id="multChoices" style="display: none">
                     <label for="numOfChoices"><b>How many choices? (Must be at least 2)</b></label>
-                    <select name="numOfChoices" id="numOfChoices" onchange="ChoiceSelectOn(this2)">
-                        <option value="none" selected disabled hidden>Select an Option</option>
+                    <select name="numOfChoices" id="numOfChoices" onchange="ChoiceSelectOn(this)">
+                        <option value="none" selected disabled hidden>Select a Choice Number</option>
                         <option value="twoQ">2</option>
                         <option value="threeQ">3</option>
                         <option value="fourQ">4</option>
@@ -80,8 +80,8 @@
                 <!--WILL ONLY SHOW WHEN SELECT ALL THAT APPLY OPTION SELECTED-->
                 <div id="selAllChoices" style="display: none">
                     <label for="selAllChoice"><b>How many options? (Must be at least 2)</b></label>
-                    <select name="selAllChoice" id="selAllChoice" onchange="OptionSelectOn(this3)">
-                        <option value="none" selected disabled hidden>Select an Option</option>
+                    <select name="selAllChoice" id="selAllChoice" onchange="OptionSelectOn(this)">
+                        <option value="none" selected disabled hidden>Select an Option Number</option>
                         <option value="twoQu">2</option>
                         <option value="threeQu">3</option>
                         <option value="fourQu">4</option>
@@ -92,15 +92,15 @@
                 <!--SHOULD APPEAR AFTER NUMBER OF OPTIONS SELECTED-->
                 <div id="selAllNums" style="display: none">
                     <label for="optionNum"><b>Option: </b></label>
-                    <input type="text" placeholder="Enter Choice" name="optionNum" id="optionNum">
+                    <input type="text" placeholder="Enter Option" name="optionNum" id="optionNum">
                 </div>
 
 
 
                 <!--Button to add question to total-->
-                <button type="submit" class="btn">Add Question</button>
+                <button type="button" id ="add" class="btn" onclick="addQuestion()">Add Question</button>
                 <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
-            </form> 
+            </form>
         </div>
 
         <br>
