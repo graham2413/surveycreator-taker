@@ -47,23 +47,31 @@ function createSingleQuestion() {
     incNum++;
 
     var quesNum = document.createElement('h2');   
-    quesNum.textContent = "Question " + incNum;  
+    quesNum.textContent = "Survey Question " + incNum;  
     document.body.appendChild(quesNum); 
 
+    //creates header Enter Your Question
     var h2 = document.createElement('h2');   
-    h2.textContent = "What is question?";  
+    h2.textContent = "Enter your question";  
     document.body.appendChild(h2); 
 
+    // creates input box for the question and assigns an id
+    var input = document.createElement("input");
+    input.setAttribute("id", "surveyQuestions");
+    input.setAttribute("type", "text");
+    document.body.appendChild(input);
+
+    //creates the placeholder effect for the textbox
+    var questionText = document.getElementById("surveyQuestions");
+    questionText.setAttribute("placeholder", "Type Question Here...");
+
+    //creates and writes a retrievable value to console for retrieval if necessary
+    var value = questionText.value;
+    console.log(value);
 }
 
 function closeForm() {
     document.getElementById("surveyForm").style.display = "none";
-}
-
-
-//function for decreasing question number count WIP
-function qDecrement(){
-
 }
 
 //function for adding questions to the question box list WIP
@@ -76,8 +84,6 @@ function addQuestion(){
     document.getElementById("questionList").appendChild(node);
 
     var totalNum = 0;
-
-
     closeForm();
 
 }
