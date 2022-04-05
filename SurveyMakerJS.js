@@ -55,7 +55,7 @@ function createSingleQuestion() {
     h2.textContent = "Enter your question";  
     document.body.appendChild(h2); 
 
-    // creates input box for the question and assigns an id
+    //creates input box for the question and assigns an id
     var input = document.createElement("input");
     input.setAttribute("id", "surveyQuestions");
     input.setAttribute("type", "text");
@@ -65,7 +65,7 @@ function createSingleQuestion() {
     var questionText = document.getElementById("surveyQuestions");
     questionText.setAttribute("placeholder", "Type Question Here...");
 
-    //creates and writes a retrievable value to console for retrieval if necessary
+    //creates a retrievable value to console for retrieval if necessary
     var value = questionText.value;
     console.log(value);
 }
