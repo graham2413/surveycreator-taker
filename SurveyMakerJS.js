@@ -3,6 +3,7 @@ let incNum = 1;
 
 
 function typeSelectOn(that) {
+
     if(that.value=="none"){
         alert("Select an option!");
     }
@@ -24,23 +25,24 @@ function typeSelectOn(that) {
 function ChoiceSelectOn(that){
     var type = document.getElementById("qType").value;
 
-    if((that.value=="none") || (type != "multChoice")){
-        document.getElementById("multChoiceNums").style.display = "none !important";
-    }
-    else{
+    if((type == "multChoice") && (that.value != "none")){
         document.getElementById("multChoiceNums").style.display = "block";
     }
+    else{
+        document.getElementById("multChoiceNums").style.display = "none";
+    }
+
 }
 
 //Function for Select All That Apply option select
 function OptionSelectOn(that) {
     var type = document.getElementById("qType").value;
 
-    if((that.value=="none") || (type != "selAll")){
-        document.getElementById("selAllNums").style.display = "none";
+    if((type == "selAll") && (that.value != "none")){
+        document.getElementById("selAllNums").style.display = "block";
     }
     else{
-        document.getElementById("selAllNums").style.display = "block";
+        document.getElementById("selAllNums").style.display = "none";
     }
 }
 
@@ -60,7 +62,7 @@ function closeForm() {
 
 //function for adding questions to the question box list WIP
 function addQuestion(){
-    document.getElementById("label1").innerHTML = "Question";
+    document.getElementById("label1").textContent = "Question";
 
     var node = document.createElement("li");
     var text = document.getElementById("question").value;
@@ -74,7 +76,7 @@ function addQuestion(){
     
     console.log(text);
     console.log(type);
-
+    //Pass this data as well as the data of who is making (userID)
     createSingleQuestion();
 
 }
