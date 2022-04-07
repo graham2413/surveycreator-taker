@@ -63,19 +63,20 @@
                 <!--WILL ONLY SHOW WHEN MULTIPLE CHOICE OPTION SELECTED-->
                 <div id="multChoices" style="display: none">
                     <label for="numOfChoices"><b>How many choices? (Must be at least 2)</b></label>
-                    <select name="numOfChoices" id="numOfChoices" onchange="ChoiceSelectOn(this)">
+                    <select name="numOfChoices" id="numOfChoices" onchange="callChoice(); deleteOther();">
+                    <option selected="selected"></option>
                         <option value="none" selected disabled hidden>Select a Choice Number</option>
-                        <option value="twoQ">2</option>
-                        <option value="threeQ">3</option>
-                        <option value="fourQ">4</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
                     </select>
                 </div>
 
                 <!--SHOULD APPEAR AFTER NUMBER OF CHOICES SELECTED-->
-                <div id="multChoiceNums" style="display: none">
+                <!-- <div id="multChoiceNums" style="display: none">
                     <label for="choiceNum"><b>Choice: </b></label>
                     <input type="text" placeholder="Enter Choice" name="choiceNum" id="choiceNum">
-                </div>
+                </div> -->
 
                 <!--WILL ONLY SHOW WHEN SELECT ALL THAT APPLY OPTION SELECTED-->
                 <div id="selAllChoices" style="display: none">
@@ -90,10 +91,10 @@
                 </div>
 
                 <!--SHOULD APPEAR AFTER NUMBER OF OPTIONS SELECTED-->
-                <div id="selAllNums" style="display: none">
+                <!-- <div id="selAllNums" style="display: none">
                     <label for="optionNum"><b>Option: </b></label>
                     <input type="text" placeholder="Enter Option" name="optionNum" id="optionNum">
-                </div>
+                </div> -->
 
 
 

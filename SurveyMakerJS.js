@@ -1,6 +1,8 @@
 //Function for type select
 let incNum = 1;
+var tryer = 0;
 
+let choiceIncrement = 1;
 
 function typeSelectOn(that) {
 
@@ -22,29 +24,29 @@ function typeSelectOn(that) {
 }
 
 //Function for multiple choice choices select
-function ChoiceSelectOn(that){
-    var type = document.getElementById("qType").value;
+// function ChoiceSelectOn(that){
+//     var type = document.getElementById("qType").value;
 
-    if((type == "multChoice") && (that.value != "none")){
-        document.getElementById("multChoiceNums").style.display = "block";
-    }
-    else{
-        document.getElementById("multChoiceNums").style.display = "none";
-    }
+//     if((type == "multChoice") && (that.value != "none")){
+//         document.getElementById("multChoiceNums").style.display = "block";
+//     }
+//     else{
+//         document.getElementById("multChoiceNums").style.display = "none";
+//     }
 
-}
+// }
 
 //Function for Select All That Apply option select
-function OptionSelectOn(that) {
-    var type = document.getElementById("qType").value;
+// function OptionSelectOn(that) {
+//     var type = document.getElementById("qType").value;
 
-    if((type == "selAll") && (that.value != "none")){
-        document.getElementById("selAllNums").style.display = "block";
-    }
-    else{
-        document.getElementById("selAllNums").style.display = "none";
-    }
-}
+//     if((type == "selAll") && (that.value != "none")){
+//         document.getElementById("selAllNums").style.display = "block";
+//     }
+//     else{
+//         document.getElementById("selAllNums").style.display = "none";
+//     }
+// }
 
 
 //Functions for opening and closing form
@@ -82,6 +84,79 @@ function addQuestion(){
 }
 
 function choiceBlank(){
-    var choiceLabel = document.createElement("label")
-    choiceLabel.value = ""
+    var choiceLabel = document.createElement("label");
+    choiceLabel.setAttribute = ("id", "choiceLabel");
+    choiceLabel.setAttribute = ("for", "choiceLabel");
+    document.getElementById("choiceLabel").value = "Choice " + choiceIncrement;
+
+    var actualChoice = document.createElement("input");
+    actualChoice.setAttribute("id", "choiceNum");
+    actualChoice.setAttribute("type", "text");
+    actualChoice.setAttribute("placeholder", "Type Choice");
+    actualChoice.setAttribute("name", "")
+}
+
+function callChoice(){
+    
+        
+    if(tryer != 0){
+        deleteOther();
+    }
+
+    
+    var e = document.getElementsByName("numOfChoices")[0];
+    var numNeeded= e.value;
+
+
+    for (let index = 0; index <numNeeded; index++) {
+       
+        // var choiceLabel = document.createElement("label");
+        // choiceLabel.setAttribute = ("id", "choiceLabel");
+        // choiceLabel.setAttribute = ("for", "choiceLabel");
+        // document.getElementById("choiceLabel").value = "Choice " + choiceIncrement;
+    
+        var divToAddMult = document.getElementById("multChoices");
+        
+
+        var actualChoice = document.createElement("input");
+        actualChoice.setAttribute("id", "choiceNum");
+        actualChoice.setAttribute("type", "text");
+        actualChoice.setAttribute("placeholder", "Type Choice");
+        
+        divToAddMult.appendChild(actualChoice);
+
+
+    
+        
+    }
+
+    tryer = numNeeded;
+    // for (let index = 0; index < numNeeded; index++) {
+    //     tryer++;
+        
+    // }
+}
+
+
+function deleteOther(){
+
+    var exists = !!document.getElementById("choiceNum");
+    var other = document.getElementById("choiceNum");
+
+    if(exists){
+        // for (let index = 0; index < tryer; index) {
+        //     other.remove();
+        //     tryer--;
+            
+        // }
+        while(tryer > 0){
+            console.log(tryer);
+            other.remove();
+            tryer--;
+            console.log("Gaming");
+        }
+
+    }
+
+
 }
