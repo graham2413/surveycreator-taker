@@ -42,7 +42,7 @@
         <button class="open-button" onclick="createSingleQuestion()">Create Survey Question</button>
 
         <div class="QuestionMake" id="surveyForm">
-            <form action="/action_page.php" class="form-container">
+            <form action="/action_page.php" method="post" class="form-container" id="formform">
                 <h1 id="questionNum">Question Creator</h1>
             
                 <!--USER TYPES IN QUESTION HERE-->
@@ -54,7 +54,6 @@
                 <select name="qType" id="qType" onchange="typeSelectOn(this)">
                     <option value="none" selected disabled hidden>Select an Option</option>
                     <option value="multChoice">Multiple Choice</option>
-                    <option value="aggDisagg">Agree/Disagree</option>
                     <option value="yesNo">Yes/No</option>
                     <option value="oneToFive">1-5 (Number Scale)</option>
                     <option value="selAll">Select All That Apply</option>
@@ -69,31 +68,35 @@
 
                 </div>
 
-                <!--SHOULD APPEAR AFTER NUMBER OF CHOICES SELECTED-->
-                <!-- <div id="multChoiceNums" style="display: none">
-                    <label for="choiceNum"><b>Choice: </b></label>
-                    <input type="text" placeholder="Enter Choice" name="choiceNum" id="choiceNum">
-                </div> -->
+                <!--WILL ONLY SHOW WHEN SELECT ALL THAT APPLY OPTION SELECTED wont necessarily need the checkboxes-->
+                <div id="selAll" style="display: none">
+                
+                    Number of choices desired:<input type="text" id="selNum" name="member" value="">
+                    <a href="#" id="filldetails" onclick="addCheckBox()">Create Choices</a> <br></br>  <br></br>            
+                     <div id="Selcontainer"></div>
 
-                <!--WILL ONLY SHOW WHEN SELECT ALL THAT APPLY OPTION SELECTED-->
-                <div id="selAllChoices" style="display: none">
-                    <label for="selAllChoice"><b>How many options? (Must be at least 2)</b></label>
-                    <select name="selAllChoice" id="selAllChoice" onchange="OptionSelectOn(this)">
-                        <option value="none" selected disabled hidden>Select an Option Number</option>
-                        <option value="twoQu">2</option>
-                        <option value="threeQu">3</option>
-                        <option value="fourQu">4</option>
-                        <option value="fiveQu">5</option>
-                    </select>
                 </div>
 
-                <!--SHOULD APPEAR AFTER NUMBER OF OPTIONS SELECTED-->
-                <!-- <div id="selAllNums" style="display: none">
-                    <label for="optionNum"><b>Option: </b></label>
-                    <input type="text" placeholder="Enter Option" name="optionNum" id="optionNum">
-                </div> -->
+                     <!--WILL ONLY SHOW WHEN 1-5 OPTION SELECTED, wont necessarily need the checkboxes-->
+                <div id="oneToFive" style="display: none">
+                
+                    <input type="checkbox" id="1" name="1" value="1">
+                    <input type="checkbox" id="2" name="2" value="2">
+                    <input type="checkbox" id="3" name="3" value="3">
+                    <input type="checkbox" id="4" name="4" value="4">
+                    <input type="checkbox" id="5" name="5" value="5">
+                </div>
 
 
+                          <!--WILL ONLY SHOW WHEN yes/no OPTION SELECTED, wont necessarily need the checkboxes-->
+                         <div id="yesNo" style="display: none">
+                
+                         <input type="checkbox" id="yes" name="yes" value="yes">
+                          <input type="checkbox" id="no" name="no" value="no">
+ 
+                          </div>
+
+                
 
                 <!--Button to add question to total-->
                 <button type="button" id ="add" class="btn" onclick="addQuestion()">Add Question</button>
@@ -110,7 +113,7 @@
         <br>
         <br>
 
-        <input type="submit" value="Submit Survey" id="subSurvey">
+        <input type="submit" onclick="subFunc()" value="Submit Survey" id="subSurvey">
 
     </body>
 </html>
