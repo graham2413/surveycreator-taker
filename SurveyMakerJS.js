@@ -80,3 +80,8 @@ function addQuestion(){
     createSingleQuestion();
 
 }
+
+function choiceBlank(){
+    var choiceLabel = document.createElement("label")
+    choiceLabel.value = ""
+}
