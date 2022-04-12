@@ -8,35 +8,124 @@
     </head>
 
     <body>
+        <nav class="navbar">
+            <a href="home.html">
+                <i class="fa fa-fw fa-home"></i>Home</a>
+        </nav>
+
         <header>
             <h1>Survey Creation</h1>
-            <h4>Create a survey using the "Add Question" button below, then press "Create Survey" when ready.</h4>
+            <h4>Title your survey, create as many survey questions as needed using the "Create Survey Question" button below, then press "Submit Survey" when ready.</h4>
         </header>
-    </body>
 
-    <br>
-    <br>
+        <div class="surveyNameDiv">
+            <label for="surveyName"><b>Title Your Survey: </b></label>
+            <input type="text" name="surveyName" id="surveyName" placeholder="Survey Name"><br>
+        </div>
 
-    <!--Show number of questions made and each one down a list. EX: Q1: (Whatever the question is), <br> Q2: (Whatever the question is)-->
-    <section class = "QuestionShow" id = "totalQ">
-        <label>Number of Questions Created: </label> <label id="numQs"></label>
-    </section>
-    <section class="QuestionShow" id="questionProduce">
-        <ol id="questionList"></ol>
-    </section>
-    
+        <br>
+        <br>
 
-    <br>
-    <br>
+        <!--Show number of questions made and each one down a list. EX: Q1: (Whatever the question is), <br> Q2: (Whatever the question is)-->
+        <section class = "QuestionShow" id = "totalQ">
+            <label>Questions Created: </label>
+        </section>
+        <section class="QuestionShow" id="questionProduce">
+            <label id="label1">No questions yet!</label> <ol id="questionList"></ol>
+        </section>
+        
 
-    <!--Create question-->
-    <button class="open-button" onclick="createSingleQuestion()">Create Survey Question</button>
+        <br>
+        <br>
 
-    <div class="QuestionMake" id="surveyForm">
-        <form action="/action_page.php" class="form-container">
+        <!--Create question-->
+        <button class="open-button" onclick="createSingleQuestion()">Create Survey Question</button>
+
+        <div class="QuestionMake" id="surveyForm">
+            <form action="/action_page.php" method="post" class="form-container" id="formform">
+                <h1 id="questionNum">Question Creator</h1>
             
-        </form>
-    </div>
+                <!--USER TYPES IN QUESTION HERE-->
+                <label for="question"><b>What is the Question?</b></label>
+                <input type="text" placeholder="Enter Question" name="question" id="question" required>
+            
+                <!--TYPE OF QUESTION BEING MADE-->
+                <label for="qType"><b>What Type of Question is This?</b></label>
+                <select name="qType" id="qType" onchange="typeSelectOn(this)" required>
+                    <option value="none" selected disabled hidden>Select an Option</option>
+                    <option value="multChoice">Multiple Choice</option>
+                    <option value="yesNo">Yes/No</option>
+                    <option value="oneToFive">1-5 (Number Scale)</option>
+                    <option value="selAll">Select All That Apply</option>
+                </select>
+
+                <!--WILL ONLY SHOW WHEN MULTIPLE CHOICE OPTION SELECTED-->
+                <div id="multChoices" style="display: none">
+                
+                    Number of choices desired:<input type="text" id="member" name="member" value="">
+                    <a href="#" id="filldetails" onclick="addFields()">Create Choices</a> <br></br>  <br></br>            
+                     <div id="container"></div>
+
+                </div>
+
+                <!--WILL ONLY SHOW WHEN SELECT ALL THAT APPLY OPTION SELECTED wont necessarily need the checkboxes-->
+                <div id="selAll" style="display: none">
+                
+                    Number of options desired:<input type="text" id="selNum" name="member" value="">
+                    <a href="#" id="filldetails" onclick="addSelFields()">Create Options</a> <br></br>  <br></br>            
+                     <div id="Selcontainer"></div>
+
+                </div>
+
+                     <!--WILL ONLY SHOW WHEN 1-5 OPTION SELECTED, wont necessarily need the checkboxes-->
+                <div id="oneToFive" style="display: none">
+                
+                    <input type="radio" id="1" name="oneToFiveGroup" value="1">
+                    <label for="1">1</label>
+
+                    <input type="radio" id="2" name="oneToFiveGroup" value="2">
+                    <label for="2">2</label>
+
+                    <input type="radio" id="3" name="oneToFiveGroup" value="3">
+                    <label for="3">3</label>
+
+                    <input type="radio" id="4" name="oneToFiveGroup" value="4">
+                    <label for="4">4</label>
+
+                    <input type="radio" id="5" name="oneToFiveGroup" value="5">
+                    <label for="5">5</label>
+                </div>
 
 
+                <!--WILL ONLY SHOW WHEN yes/no OPTION SELECTED, wont necessarily need the checkboxes-->
+                <div id="yesNo" style="display: none">
+    
+                <input type="radio" id="yes" name="yesNoGroup" value="yes">
+                <label for="yes">Yes</label>
+
+                <input type="radio" id="no" name="yesNoGroup" value="no">
+                <label for="no">No</label>
+
+                </div>
+
+                
+
+                <!--Button to add question to total-->
+                <button type="button" id ="add" class="btn" onclick="addQuestion()">Add Question</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
+            </form>
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <input type="submit" onclick="subFunc()" value="Submit Survey" id="subSurvey">
+
+    </body>
 </html>

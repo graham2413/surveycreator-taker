@@ -1,73 +1,47 @@
-
-
 //Function for type select
-var incNum=0;
+let incNum = 1;
+
+let choiceIncrement = 1;
 
 function typeSelectOn(that) {
+
     if(that.value=="none"){
         alert("Select an option!");
     }
     else if(that.value=="multChoice"){
         document.getElementById("multChoices").style.display = "block";
-        document.getElementById("selAllChoices").style.display = "none";
+        document.getElementById("selAll").style.display = "none";
+        document.getElementById("oneToFive").style.display = "none";
+        document.getElementById("yesNo").style.display = "none";
     }
     else if(that.value=="selAll"){
-        document.getElementById("selAllChoices").style.display = "block";
+        document.getElementById("selAll").style.display = "block";
         document.getElementById("multChoices").style.display = "none";
+        document.getElementById("oneToFive").style.display = "none";
+        document.getElementById("yesNo").style.display = "none";
     }
-    else{
+    else if(that.value=="oneToFive"){
+        document.getElementById("oneToFive").style.display = "block";
         document.getElementById("multChoices").style.display = "none";
-        document.getElementById("selAllChoices").style.display = "none";
-    }
-}
-
-//Function for multiple choice choices select
-function ChoiceSelectOn(that2){
-    if(that2.value=="none"){
-        document.getElementById("multChoiceNums").style.display = "none";
+        document.getElementById("selAll").style.display = "none";
+        document.getElementById("yesNo").style.display = "none";
     }
     else{
-        document.getElementById("multChoiceNums").style.display = "block";
-    }
-}
-//Function for Select All That Apply option select
-function ChoiceSelectOn(that3) {
-    if(that3.value=="none"){
-        document.getElementById("selAllNums").style.display = "none";
-    }
-    else{
-        document.getElementById("selAllNums").style.display = "block";
+        document.getElementById("yesNo").style.display = "block";
+        document.getElementById("multChoices").style.display = "none";
+        document.getElementById("selAll").style.display = "none";
+        document.getElementById("oneToFive").style.display = "none";
     }
 }
 
 
 //Functions for opening and closing form
 function createSingleQuestion() {
-    
-    incNum++;
+ 
+    document.getElementById("questionNum").textContent = "Question " + incNum;  
+    document.getElementById("surveyForm").style.display = "block";
 
-    var quesNum = document.createElement('h2');   
-    quesNum.textContent = "Survey Question " + incNum;  
-    document.body.appendChild(quesNum); 
 
-    //creates header Enter Your Question
-    var h2 = document.createElement('h2');   
-    h2.textContent = "Enter your question";  
-    document.body.appendChild(h2); 
-
-    //creates input box for the question and assigns an id
-    var input = document.createElement("input");
-    input.setAttribute("id", "surveyQuestions");
-    input.setAttribute("type", "text");
-    document.body.appendChild(input);
-
-    //creates the placeholder effect for the textbox
-    var questionText = document.getElementById("surveyQuestions");
-    questionText.setAttribute("placeholder", "Type Question Here...");
-
-    //creates a retrievable value to console for retrieval if necessary
-    var value = questionText.value;
-    console.log(value);
 }
 
 function closeForm() {
@@ -76,74 +50,122 @@ function closeForm() {
 
 //function for adding questions to the question box list WIP
 function addQuestion(){
-    console.log("here");
-    var node = document.createElement("Li");
+    document.getElementById("label1").textContent = "Question";
+
+    var node = document.createElement("li");
+
+    //Question text below
     var text = document.getElementById("question").value;
     var textnode = document.createTextNode(text);
     node.appendChild(textnode);
+    console.log(text);
+
+  //type of question below
+    var type = document.getElementById("qType").value;
+    console.log(type);
+
+
     document.getElementById("questionList").appendChild(node);
 
-    var totalNum = 0;
-    closeForm();
+    incNum++;
+
+    //Pass this data as well as the data of who is making (userID)
+    createSingleQuestion();
 
 }
-/*
 
-<h1>Question 1</h1>
-        
-        <!--USER TYPES IN QUESTION HERE-->
-        <label for="question"><b>What is the Question?</b></label>
-        <input type="text" placeholder="Enter Question" name="question" id="question" required>
+function choiceBlank(){
+    var choiceLabel = document.createElement("label");
+    choiceLabel.setAttribute = ("id", "choiceLabel");
+    choiceLabel.setAttribute = ("for", "choiceLabel");
+    document.getElementById("choiceLabel").value = "Choice " + choiceIncrement;
+
+    var actualChoice = document.createElement("input");
+    actualChoice.setAttribute("id", "choiceNum");
+    actualChoice.setAttribute("type", "text");
+    actualChoice.setAttribute("placeholder", "Type Choice");
+    actualChoice.setAttribute("name", "")
+}
+
+
+function addFields(){
+    // Generate a dynamic number of inputs
+    var number = document.getElementById("member").value;
+    // Get the element where the inputs will be added to
+    var container = document.getElementById("container");
+    // Remove every children it had before
+    while (container.hasChildNodes()) {
+        container.removeChild(container.lastChild);
+    }
+    for (i=0;i<number;i++){
+        // Append a node with a random text
+        container.appendChild(document.createTextNode("Choice " + (i+1)));
+        // Create an <input> element, set its type and name attributes
+        var input = document.createElement("input");
+        input.setAttribute("placeholder", "Type Choice");
+        input.type = "text";
+        input.name = "member" + i;
+        container.appendChild(input);
+        // Append a line break 
+        container.appendChild(document.createElement("br"));
+    }
     
-        <!--TYPE OF QUESTION BEING MADE-->
-        <label for="qType"><b>What Type of Question is This?</b></label>
-        <select name="qType" id="qType" onchange="typeSelectOn(this)">
-            <option value="none" selected disabled hidden>Select an Option</option>
-            <option value="freeResponse">Free Response</option>
-            <option value="multChoice">Multiple Choice</option>
-            <option value="aggDisagg">Agree/Disagree</option>
-            <option value="yesNo">Yes/No</option>
-            <option value="oneToFive">1-5 (Number Scale)</option>
-            <option value="selAll">Select All That Apply</option>
-        </select>
+    
+} 
 
-        <!--WILL ONLY SHOW WHEN MULTIPLE CHOICE OPTION SELECTED-->
-        <div id="multChoices" style="display: none">
-            <label for="numOfChoices"><b>How many choices? (Must be at least 2)</b></label>
-            <select name="numOfChoices" id="numOfChoices" onchange="ChoiceSelectOn(this2)">
-                <option value="none" selected disabled hidden>Select an Option</option>
-                <option value="twoQ">2</option>
-                <option value="threeQ">3</option>
-                <option value="fourQ">4</option>
-            </select>
-        </div>
+function addSelFields(){
+    // Generate a dynamic number of inputs
+    var number = document.getElementById("selNum").value;
+    // Get the element where the inputs will be added to
+    var container = document.getElementById("Selcontainer");
+    // Remove every children it had before
+    while (container.hasChildNodes()) {
+        container.removeChild(container.lastChild);
+    }
+    for (i=0;i<number;i++){
+        // Append a node with a random text
+        container.appendChild(document.createTextNode("Choice " + (i+1)));
+        // Create an <input> element, set its type and name attributes
+        var input = document.createElement("input");
+        input.setAttribute("placeholder", "Type Option");
+        input.type = "text";
+        input.name = "member" + i;
+        container.appendChild(input);
+        // Append a line break 
+        container.appendChild(document.createElement("br"));
+    }
+} 
 
-        <!--SHOULD APPEAR AFTER NUMBER OF CHOICES SELECTED-->
-        <div id="multChoiceNums" style="display: none">
-            <label for="choiceNum"><b>Choice: </b></label>
-            <input type="text" placeholder="Enter Choice" name="choiceNum" id="choiceNum">
-        </div>
+// function addCheckBox(){
+    
+//     // Generate a dynamic number of inputs
+//     var number = document.getElementById("selNum").value;
+//     console.log(number);
+//     // Get the element where the inputs will be added to
+//     var container = document.getElementById("Selcontainer");
+//     // Remove every children it had before
+//     while (container.hasChildNodes()) {
+//         container.removeChild(container.lastChild);
+//     }
+//     for (i=0;i<number;i++){
+        
+//         // Append a node with a random text
+//         container.appendChild(document.createTextNode("Choice " + (i+1)));
+//         // Create an <input> element, set its type and name attributes
+//         var input = document.createElement("INPUT");
+//         input.setAttribute("type", "checkbox");
+//         container.appendChild(input);
+//         // Append a line break 
+//         container.appendChild(document.createElement("br"));
+//     }
+// } 
 
-        <!--WILL ONLY SHOW WHEN SELECT ALL THAT APPLY OPTION SELECTED-->
-        <div id="selAllChoices" style="display: none">
-            <label for="selAllChoice"><b>How many options? (Must be at least 2)</b></label>
-            <select name="selAllChoice" id="selAllChoice" onchange="OptionSelectOn(this3)">
-                <option value="none" selected disabled hidden>Select an Option</option>
-                <option value="twoQu">2</option>
-                <option value="threeQu">3</option>
-                <option value="fourQu">4</option>
-                <option value="fiveQu">5</option>
-            </select>
-        </div>
+//databse stuff with data
+function subFunc(){
 
-        <!--SHOULD APPEAR AFTER NUMBER OF OPTIONS SELECTED-->
-        <div id="selAllNums" style="display: none">
-            <label for="optionNum"><b>Option: </b></label>
-            <input type="text" placeholder="Enter Choice" name="optionNum" id="optionNum">
-        </div>
+ var form  = document.getElementById('formform');
+
+console.log(form.elements)
 
 
-
-        <!--Button to add question to total-->
-        <button type="button" id ="add" class="btn" onclick="addQuestion()">Add Question</button>
-        <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>*/
+}
