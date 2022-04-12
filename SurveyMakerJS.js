@@ -64,6 +64,9 @@ function addQuestion(){
     var type = document.getElementById("qType").value;
     console.log(type);
 
+    //working on printing the second choice input for multiple choice questions
+    var fillDetails = document.getElementsByName("members").text;
+    console.log(fillDetails);
 
     document.getElementById("questionList").appendChild(node);
 
