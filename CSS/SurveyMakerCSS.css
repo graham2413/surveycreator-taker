@@ -32,6 +32,16 @@ header{
 
 }
 
+.delete-button{
+  background-color:coral;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.9;
+
+}
+
 /* The popup form - hidden by default */
 .QuestionMake {
     display: none;

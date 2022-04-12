@@ -139,6 +139,11 @@ function addSelFields(){
     }
 } 
 
+// adding function to remove question from list and console WIP
+function removeQuestionFromList(){
+    console.log("remove");
+}
+
 // function addCheckBox(){
     
 //     // Generate a dynamic number of inputs
