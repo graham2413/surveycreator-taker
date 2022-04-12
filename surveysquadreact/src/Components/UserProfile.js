@@ -1,8 +1,6 @@
-import React, {useContext, useState,useEffect } from 'react';
+import React, {useState } from 'react';
 import {useParams,Link} from "react-router-dom"
 import { getDatabase, ref, child, get } from "firebase/database";
-import { AuthContext } from "../Auth";
-import { useHistory } from 'react-router-dom';
 import Nav from './Nav';
 import '../CSS/index.css'
 

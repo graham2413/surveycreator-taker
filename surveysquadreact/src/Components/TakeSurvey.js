@@ -1,7 +1,6 @@
-import React, {useContext, useState,useEffect } from 'react';
+import React, {useState,useEffect } from 'react';
 import Nav from './Nav'
 import {useParams,Link} from "react-router-dom"
-import { log } from 'debug';
 import { getDatabase, ref, child, get } from "firebase/database";
 
 
@@ -19,7 +18,7 @@ export default function TakeSurvey() {
 
 
     useEffect(() => {
-   get(child(dbRef, `Users/` + handle + `/surveysCreated/`+ `${surveyName}` + `/survey`)).then((snapshot) => {
+   get(child(dbRef, `Users/` + handle + `/surveysCreated/${surveyName}/survey`)).then((snapshot) => {
     if (snapshot.exists()) {
      console.log(snapshot.val());
      setSurveys(snapshot.val());
