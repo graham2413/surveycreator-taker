@@ -2,8 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 75vh;
-  background-color: purple;
+  height: 100vh;
+  background-color: #3352de;
 }
 .central-box {
   text-align: center;
@@ -22,7 +22,6 @@
 }
 input {
   text-align: center;
-  margin: 5px;
 }
 .signintopage-registerintopage-buttons {
   margin: 10px 0 15px 0;
@@ -51,7 +50,4 @@ input {
 }
 .register-signin-links:hover {
   color: red;
-}
-input {
-  width: 170px;
 }

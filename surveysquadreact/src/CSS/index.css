@@ -1,0 +1,133 @@
+body {
+  background-color: blue;
+  }
+  .homebody {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 65vh;
+    }
+    .central-box {
+      text-align: center;
+      position: relative;
+      background-color: white;
+      border-radius: 20px;
+      padding: 10px;
+    }
+    
+    .appointmentsCSS{
+      margin-left: 8%;
+    }
+    .eachTeach{
+      color: blue;
+      list-style: square;
+      margin-left: 8%;
+      display: block;
+      text-decoration: none;
+    }
+    .eachTeach:hover{
+      color: pink;
+    }
+    .welcomeCSS{
+      margin-top: 5%;
+      text-align:center;
+    }
+    .appointmentLB{
+      font: bold 17px Arial;
+      text-decoration: none;
+      background-color: #EEEEEE;
+      color: #333333;
+      padding: 2px 6px 2px 6px;
+      border-top: 1px solid #CCCCCC;
+      border-right: 1px solid #333333;
+      border-bottom: 1px solid #333333;
+      border-left: 1px solid #CCCCCC;  
+      text-align: center;
+      display: block;
+      margin: auto;
+      width: 75%;
+    }
+    .apps{
+      margin-left: 5%;
+  
+    }
+    .appsdate{
+      margin-left: 10%;
+      font-size: 15px;
+      color: gray;
+    }
+    .deleteappButton{
+      margin-left: 10%;
+      font-size: 15px;
+    }
+    .AppointmentBlock{
+      width: 50%;
+      background-color: white;
+      padding: 5px;
+      border-radius: 10px;
+      margin: 0 0 15px 20px;
+      border: solid 4px;
+    }
+    .timecontainer{
+      margin-bottom: 10px; 
+      text-align: center;
+    }
+    .checkcontainer{
+      margin: auto;
+      width: 30%;
+      margin-bottom: 50px;
+      margin-top: 50px;
+    }
+    
+    .submitcont{
+  text-align: center;
+    }
+    .formcont{
+      height: 80vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .anotherformdiv{
+        width: 60%; 
+      background-color: beige;
+      padding: 17px;
+      border-radius: 10px; 
+       margin: auto; 
+       border: solid 4px; 
+       justify-content: center; 
+       align-items: center;  
+    }
+    .searchbar{
+      margin-left: 10%;
+      margin-bottom: 15px;
+      margin-top: 10px;
+    }
+  
+  
+    @media only screen and (max-width: 765px) {
+      .checkcontainer {
+        width: 40%;
+      }
+    }
+  
+    @media only screen and (max-width: 600px) {
+      .checkcontainer {
+        width: 55%;
+      }
+    }
+    .teacherthing{
+      margin-top: 25px;
+      text-align: center;
+    }
+  
+    .blahblah{
+      font-size: 25px;
+      font-weight: 700;
+    }
+    #surveyname{
+      text-align: center;
+    }
+    .surveynamecont, .firsttextcont{
+      text-align: center;
+    }
