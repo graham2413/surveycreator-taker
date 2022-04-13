@@ -60,9 +60,9 @@ const dataHandler = (event) => {
     form
   }
    try{
-  var newPostKey = "surveyResults"
+
   var updates = {};
-  updates[`Users/` + handle + `/surveysCreated/${surveyName}/` + newPostKey] = postData;
+  updates[`Users/` + handle + `/surveysCreated/${surveyName}/surveyResults/${currentUser.uid}`] = postData;
  firebase.database().ref().update(updates);
    }catch(error){console.log(error);}
 

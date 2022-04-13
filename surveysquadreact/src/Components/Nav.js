@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import * as ReactBootStrap from 'react-bootstrap';
 import firebase from "../config";
 import "../CSS/index.css";
- import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { AuthContext } from "../Auth";
+import { Link } from 'react-router-dom';
 
 
 function Nav(){
+
+  const { currentUser } = useContext(AuthContext);
 
 return(
   <div>
@@ -17,6 +21,7 @@ return(
       <ReactBootStrap.Nav className="me-auto">
         <ReactBootStrap.Nav.Link href="/">Home</ReactBootStrap.Nav.Link>
         <ReactBootStrap.Nav.Link href="/surveyCreator">Create Survey</ReactBootStrap.Nav.Link>
+        <ReactBootStrap.Nav.Link href={`/mySurveys`}>My Surveys</ReactBootStrap.Nav.Link>
         <ReactBootStrap.Nav.Link href="/accountsPage">Users</ReactBootStrap.Nav.Link>
         <button onClick={() => firebase.auth().signOut() && window.location.replace("/login")}>Sign Out</button>
       </ReactBootStrap.Nav>
