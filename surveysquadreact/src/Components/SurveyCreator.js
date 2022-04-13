@@ -58,6 +58,7 @@ function SurveyCreator() {
 
   setForm(prev=>[...prev,inputState])
 };
+
 const onChange=(index,event)=>{
 
 event.preventDefault();
