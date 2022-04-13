@@ -21,7 +21,6 @@ function SurveyCreator() {
     setSurveyName(event.target.value);
     
   }
-  //  console.log(surveyName);
 
   const { currentUser } = useContext(AuthContext);
 
@@ -94,7 +93,8 @@ const handleRemove=(e,index)=>{
   <br></br>
   <div className="firsttextcont">
       <h1>Survey Creator</h1>
-      <h2>Format entry as follows -- </h2>
+      <h2>Format question type as follows -- </h2>
+      <h3>Available question types are (CASE SENSITIVE): Yes/No, freeResponse, and Scale (1-5 scale)</h3>
  </div>
   
 <form onSubmit={dataHandler}>
