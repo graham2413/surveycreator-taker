@@ -110,13 +110,12 @@ const handleRemove=(e,index)=>{
  <div key={`item-${index}`}>
      <br></br> 
     <div>
-        <input 
-        type="text" 
-        name="quesType" 
-        placeholder="Question Type"
-         value={item.start}
-          onChange={(e)=>onChange(index,e)}
-          />
+        <select  onChange={(e)=>onChange(index,e)} name="responses" id="responses">
+        <option value="n/a">Choose Question Type:</option>
+      <option value="Yes/No">Yes/No</option>
+      <option value="freeResponse">Free Response</option>
+      <option value="Scale">Scale</option>
+         </select>
 
     </div>
     <div>

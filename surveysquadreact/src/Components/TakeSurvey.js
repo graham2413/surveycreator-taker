@@ -86,13 +86,13 @@ function lol(){
          <form onSubmit={dataHandler}>
 
             {surveys.map((element,index)=>{
-                if(surveys[index].quesType==="Yes/No"){
+                if(surveys[index].responses==="Yes/No"){
                return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br> Yes <input  name="checkboxyesno"  onChange={(e)=>setForm(prev=>[...prev,true])} type="checkbox"></input> <br></br> No <input onChange={(e)=>setForm(prev=>[...prev,false])} type="checkbox"></input> </div>
                 }
-                else if(surveys[index].quesType==="freeResponse"){
+                else if(surveys[index].responses==="freeResponse"){
                     return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br> <input name="texttype" onBlur={(e)=>setForm(prev=>[...prev,e.target.value])} type="text" autoFocus></input> </div>
                 }
-              //   else if(surveys[index].quesType==="Scale"){
+              //   else if(surveys[index].responses==="Scale"){
               //     return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br> <input id="range" onBlur={(e)=>setForm(prev=>[...prev,e.target.value])} type="range" min="0" max="5"  autoFocus></input> </div>
               // }
                        })}
