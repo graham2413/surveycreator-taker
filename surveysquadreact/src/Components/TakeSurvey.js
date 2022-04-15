@@ -12,6 +12,8 @@ export default function TakeSurvey() {
     const {surveyName,handle} = useParams();
 
     const dbRef = ref(getDatabase());
+    const [thaTrue, setThaTrue]=useState(null);
+
 
     const db = firebase.database();
 
@@ -85,12 +87,6 @@ useEffect(() => {
 const dataHandler = (event) => {
   event.preventDefault();
 
-  if(form[0]===""){
-    form.splice(0, 1);
-  }
-
-  console.log(form)   
-
   var postData={
 
     form
@@ -108,9 +104,26 @@ const dataHandler = (event) => {
 }
 
 
+useEffect(() => {
+  get(child(dbRef, `Users/` + handle + `/surveysCreated/${surveyName}/`)).then((snapshot) => {
+   if (snapshot.exists()) {
+    // console.log(snapshot.val().open);
+
+    if(snapshot.val().open==="true"){
+      setThaTrue(true);
+    }
+    else{
+      setThaTrue(false);
+    }
 
 
-
+   } else {
+     console.log("No name exists");
+   }
+ }).catch((error) => {
+   console.error(error);
+ });
+}, []);
 
 
     return (
@@ -119,7 +132,7 @@ const dataHandler = (event) => {
                 <Nav/>
             </div>
                      {/* add below to if statement, OR if propertiy open===false */}
-                         {notTakey === true? (
+                         {notTakey === true || thaTrue === false? (
                    <div className="canttake">You have either already taken this survey, or it has has been closed.</div>
 
               ): 
