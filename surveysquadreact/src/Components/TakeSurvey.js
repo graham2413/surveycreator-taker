@@ -15,7 +15,6 @@ export default function TakeSurvey() {
 
     const db = firebase.database();
 
-
     const [surveys,setSurveys] =useState([]);
 
     const [form, setForm]=useState([]);
@@ -71,10 +70,10 @@ const dataHandler = (event) => {
   routeChange();
 }
 
-function lol(){
-  console.log("lol");
-}
-   
+
+
+
+
     return (
         <div>
             <div>
@@ -93,7 +92,7 @@ function lol(){
                     return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br> <input name="texttype" onBlur={(e)=>setForm(prev=>[...prev,e.target.value])} type="text" autoFocus></input> </div>
                 }
               //   else if(surveys[index].responses==="Scale"){
-              //     return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br> <input id="range" onBlur={(e)=>setForm(prev=>[...prev,e.target.value])} type="range" min="0" max="5"  autoFocus></input> </div>
+              //     return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br> <input id="range" onBlur={(e)=>setForm(prev=>[...prev,e.target.value])} type="range" min="0" max="5"  autoFocus></input> <br></br><output></output></div>
               // }
                        })}
 

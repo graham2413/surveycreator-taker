@@ -131,3 +131,6 @@ body {
     .surveynamecont, .firsttextcont{
       text-align: center;
     }
+    output{
+      margin-left: 5px;
+    }
