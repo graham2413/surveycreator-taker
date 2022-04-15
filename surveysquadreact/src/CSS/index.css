@@ -134,3 +134,9 @@ body {
     output{
       margin-left: 5px;
     }
+    .canttake{
+      text-align: center;
+      font-size: 25px;
+      font-weight: 500;
+      margin-top: 50%;
+    }

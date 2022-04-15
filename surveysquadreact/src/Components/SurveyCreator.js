@@ -35,7 +35,8 @@ function SurveyCreator() {
      
 
     var postData = {
-      survey: form
+      survey: form,
+      open:true
  
     };
    
