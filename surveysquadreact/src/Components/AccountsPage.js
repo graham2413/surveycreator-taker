@@ -20,7 +20,7 @@ export default function AccountsPage() {
       if (snapshot.exists()) {
   
          setTeachers(snapshot.val())
-        //  console.log(teachers);
+         console.log(snapshot.val());
       }
      else {
         console.log("No teachers exist");
@@ -40,7 +40,7 @@ export default function AccountsPage() {
            </div>
 
 
-           <h1>All Teachers</h1>
+           <h1>All Users</h1>
         <input onChange={event => setSearchTerm(event.target.value)} className="searchbar" type="text" placeholder="Search teachers..."/>
     
           <ul>

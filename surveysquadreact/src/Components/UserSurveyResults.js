@@ -1,6 +1,6 @@
 import React, {useState,useEffect,useContext } from 'react';
 import { getDatabase, ref, child, get } from "firebase/database";
-import {useParams,Link} from "react-router-dom"
+import {useParams} from "react-router-dom"
 import Nav from './Nav'
 import { AuthContext } from '../Auth';
 

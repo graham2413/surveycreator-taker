@@ -1,6 +1,6 @@
 import React, {useState,useEffect,useContext } from 'react';
 import Nav from './Nav'
-import {useParams,Link,useHistory} from "react-router-dom"
+import {useParams,useHistory} from "react-router-dom"
 import { getDatabase, ref, child, get } from "firebase/database";
 import { AuthContext } from "../Auth";
 import firebase from "../config";
@@ -12,10 +12,8 @@ export default function TakeSurvey() {
     const {surveyName,handle} = useParams();
 
     const dbRef = ref(getDatabase());
+    
     const [thaTrue, setThaTrue]=useState(null);
-
-
-    const db = firebase.database();
 
     const [surveys,setSurveys] =useState([]);
     const [notTakey,setNoTakey] =useState(false);

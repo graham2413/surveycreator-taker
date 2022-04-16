@@ -1,15 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import * as ReactBootStrap from 'react-bootstrap';
 import firebase from "../config";
 import "../CSS/index.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { AuthContext } from "../Auth";
-import { Link } from 'react-router-dom';
-
 
 function Nav(){
-
-  const { currentUser } = useContext(AuthContext);
 
 return(
   <div>

@@ -1,5 +1,4 @@
 import { useHistory, Link } from 'react-router-dom';
-import firebase from "../config";
 import { getDatabase, ref, child, get } from "firebase/database";
 import React, { useState,useEffect,useContext } from 'react';
 import { AuthContext } from "../Auth";
@@ -14,8 +13,6 @@ function Home() {
 
   const [userNamename, setuserNamename]=useState(null);
   const { currentUser } = useContext(AuthContext);
-
-  const [userType,setUserType]=useState(null);
   
     
   useEffect(() => {
