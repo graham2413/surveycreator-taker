@@ -12,10 +12,11 @@ export default function TakeSurvey() {
     const {surveyName,handle} = useParams();
 
     const dbRef = ref(getDatabase());
-    
+
     const [thaTrue, setThaTrue]=useState(null);
 
     const [surveys,setSurveys] =useState([]);
+
     const [notTakey,setNoTakey] =useState(false);
 
     const [form, setForm]=useState([]);
@@ -32,6 +33,7 @@ export default function TakeSurvey() {
 
 
     useEffect(() => {
+
    get(child(dbRef, `Users/` + handle + `/surveysCreated/${surveyName}/survey`)).then((snapshot) => {
     if (snapshot.exists()) {
     //  console.log(snapshot.val());
@@ -58,11 +60,7 @@ firebase.database().ref(`Users/` + handle + `/surveysCreated/${surveyName}/surve
     if(key === currentUser.uid){
       setNoTakey(true);
     }
-
    }
-
-
-
 })
 
 }, []);
@@ -82,37 +80,18 @@ useEffect(() => {
 }, []);
 
    
-const dataHandler = (event) => {
-  event.preventDefault();
-
-  var postData={
-
-    form
-  }
-   try{
-
-  var updates = {};
-  updates[`Users/` + handle + `/surveysCreated/${surveyName}/surveyResults/${currentUser.uid}`] = postData;
- firebase.database().ref().update(updates);
-   }catch(error){console.log(error);}
-
- 
-
-  routeChange();
-}
-
 
 useEffect(() => {
   get(child(dbRef, `Users/` + handle + `/surveysCreated/${surveyName}/`)).then((snapshot) => {
    if (snapshot.exists()) {
-    // console.log(snapshot.val().open);
 
-    if(snapshot.val().open==="true"){
+    if(snapshot.val().open==="true" || true){
       setThaTrue(true);
     }
     else{
       setThaTrue(false);
     }
+  
 
 
    } else {
@@ -124,12 +103,124 @@ useEffect(() => {
 }, []);
 
 
+const onchange=(index,event)=>{
+  // console.log(form);
+  event.preventDefault();
+  event.persist();
+
+  setForm(prev=>[...prev,null])
+
+  for (let index = 0; index < form.length; index++) {
+
+ if(form[index]===null){
+  form.splice(index,1)
+ }
+  }
+
+  setForm(prev=>{
+   return prev.map((item,i)=>{
+   
+  if (i!==index){
+    return item;
+  } 
+  return{
+  ...item,
+  [event.target.name]:event.target.value,
+  }
+    });
+  
+  });console.log(form);
+  };
+
+  const dataHandler = (event) => {
+    event.preventDefault();
+
+    for (let index = 0; index < form.length; index++) {
+
+      if(form[index]===null){
+       form.splice(index,1)
+      }
+       }
+     console.log(form);
+
+
+    var postData={
+      form
+    }
+     try{
+  
+    var updates = {};
+    updates[`Users/` + handle + `/surveysCreated/${surveyName}/surveyResults/${currentUser.uid}`] = postData;
+   firebase.database().ref().update(updates);
+     }catch(error){console.log(error);}
+  
+   
+    // routeChange();
+  }
+
+  function radioFunc(index,event) {
+     
+  event.preventDefault();
+  event.persist();
+
+  setForm(prev=>[...prev,null])
+
+  for (let index = 0; index < form.length; index++) {
+
+ if(form[index]===null){
+  form.splice(index,1)
+ }
+  }
+
+  setForm(prev=>{
+   return prev.map((item,i)=>{
+   
+  if (i!==index){
+    return item;
+  } 
+  return{
+  ...item,
+  [event.target.name]:event.target.value,
+  }
+    });
+  
+  });  
+  event.preventDefault();
+  event.persist();
+
+  setForm(prev=>[...prev,null])
+
+  for (let index = 0; index < form.length; index++) {
+
+ if(form[index]===null){
+  form.splice(index,1)
+ }
+  }
+
+  setForm(prev=>{
+   return prev.map((item,i)=>{
+   
+  if (i!==index){
+    return item;
+  } 
+  return{
+  ...item,
+  [event.target.name]:event.target.value,
+  }
+    });
+  
+  });console.log(form);
+  };
+    
+  
+
+
     return (
         <div>
             <div>
                 <Nav/>
             </div>
-                     {/* add below to if statement, OR if propertiy open===false */}
+                     
                          {notTakey === true || thaTrue === false? (
                    <div className="canttake">You have either already taken this survey, or it has has been closed.</div>
 
@@ -145,14 +236,14 @@ useEffect(() => {
 
             {surveys.map((element,index)=>{
                 if(surveys[index].responses==="Yes/No"){
-               return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br> Yes <input  name="checkboxyesno"  onChange={(e)=>setForm(prev=>[...prev,true])} type="checkbox"></input> <br></br> No <input onChange={(e)=>setForm(prev=>[...prev,false])} type="checkbox"></input> </div>
+               return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br> <div onChange={(e)=>radioFunc(index,e)}> <input type="radio" value="Yes" name="yesno" /> Yes  <input type="radio" value="No" name="yesno" /> No</div></div>
                 }
                 else if(surveys[index].responses==="freeResponse"){
-                    return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br> <input name="texttype" onBlur={(e)=>setForm(prev=>[...prev,e.target.value])} type="text" autoFocus></input> </div>
+                    return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br> <input name="freeResponse" onChange={(e)=>onchange(index,e)} type="text" autoFocus></input> </div>
                 }
-              //   else if(surveys[index].responses==="Scale"){
-              //     return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br> <input id="range" onBlur={(e)=>setForm(prev=>[...prev,e.target.value])} type="range" min="0" max="5"  autoFocus></input> <br></br><output></output></div>
-              // }
+                else if(surveys[index].responses==="Scale"){
+                  return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br> <input id="range" name="scaleVal" onChange={(e)=>onchange(index,e)} type="range" min="0" max="5"  autoFocus></input> <br></br><output></output></div>
+              }
                        })}
 
                 <input type="submit" />

@@ -69,12 +69,13 @@ setForm(prev=>{
 
 if (i!==index){
   return item;
-}
+} console.log(item);
 return{
 ...item,
 [event.target.name]:event.target.value,
 }
   });
+  
 
 });
 };
