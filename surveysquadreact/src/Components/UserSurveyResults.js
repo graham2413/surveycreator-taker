@@ -10,12 +10,11 @@ export default function UserSurveyResults() {
     const { currentUser } = useContext(AuthContext);
 
     const {handle,another} = useParams();
-console.log(handle);
-
 
     const [surveyAnsuhs, setSurveyAnsuhs]=useState([]);
 
-    
+    const [namer, setNamer]=useState();
+
     useEffect(() => {
         get(child(dbRef, `Users/` + currentUser.uid + `/surveysCreated/`  + another + `/surveyResults`)).then((snapshot) => {
          if (snapshot.exists()) {
@@ -30,22 +29,32 @@ console.log(handle);
          console.error(error);
        });
      }, []);
+
+
+     useEffect(() => {
+        get(child(dbRef, `Users/${handle}`)).then((snapshot) => {
+         if (snapshot.exists()) {
+        
+            setNamer(snapshot.val().full_name);
+            // setSurveyAnsuhs(snapshot.val()[handle].form);
+       
+         } else {
+           console.log("No results exist");
+         }
+       }).catch((error) => {
+         console.error(error);
+       });
+     }, []);
+
     
     return (
         <div>
             <div><Nav/></div>
-
-            <ol>
-            {surveyAnsuhs.map((value, index) => {
-                if(value===true){
-                    return <li>True</li>
-                }
-               else if(value===false){
-                    return <li>False</li>
-                }
-                else{
-                return <li>{value}</li>}
-                })}
+           <h2 className="namer"> {namer}'s' Results</h2>
+            <ol className="surveyAnsuhs">
+            {Object.values(surveyAnsuhs).map((value, index) => {
+        return <li key={index}>{value.answer}</li>
+        })}
             </ol>
         </div>
     )

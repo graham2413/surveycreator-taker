@@ -85,14 +85,12 @@ useEffect(() => {
   get(child(dbRef, `Users/` + handle + `/surveysCreated/${surveyName}/`)).then((snapshot) => {
    if (snapshot.exists()) {
 
-    if(snapshot.val().open==="true" || true){
+    if(snapshot.val().open==="true" || snapshot.val().open===true){
       setThaTrue(true);
     }
     else{
       setThaTrue(false);
     }
-  
-
 
    } else {
      console.log("No name exists");
@@ -154,8 +152,8 @@ const onchange=(index,event)=>{
    firebase.database().ref().update(updates);
      }catch(error){console.log(error);}
   
-   
-    // routeChange();
+   alert(`Thank you for taking ${handle}'s survey! Your response has been recorded`);
+    routeChange();
   }
 
   function radioFunc(index,event) {
@@ -212,8 +210,6 @@ const onchange=(index,event)=>{
   });console.log(form);
   };
     
-  
-
 
     return (
         <div>
@@ -236,13 +232,13 @@ const onchange=(index,event)=>{
 
             {surveys.map((element,index)=>{
                 if(surveys[index].responses==="Yes/No"){
-               return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br> <div onChange={(e)=>radioFunc(index,e)}> <input type="radio" value="Yes" name="yesno" /> Yes  <input type="radio" value="No" name="yesno" /> No</div></div>
+               return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br> <div onChange={(e)=>radioFunc(index,e)}> <input type="radio" value="Yes" name="answer" /> Yes  <input type="radio" value="No" name="answer" /> No</div></div>
                 }
                 else if(surveys[index].responses==="freeResponse"){
-                    return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br> <input name="freeResponse" onChange={(e)=>onchange(index,e)} type="text" autoFocus></input> </div>
+                    return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br> <input name="answer" onChange={(e)=>onchange(index,e)} type="text" autoFocus></input> </div>
                 }
                 else if(surveys[index].responses==="Scale"){
-                  return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br> <input id="range" name="scaleVal" onChange={(e)=>onchange(index,e)} type="range" min="0" max="5"  autoFocus></input> <br></br><output></output></div>
+                  return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br> <input id="range" name="answer" onChange={(e)=>onchange(index,e)} type="range" min="0" max="5"  autoFocus></input> <br></br><output></output></div>
               }
                        })}
 
