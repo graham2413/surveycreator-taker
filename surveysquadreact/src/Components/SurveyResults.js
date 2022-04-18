@@ -15,6 +15,16 @@ export default function SurveyResults() {
     const [surveyResults, setSurveyResults]=useState([]);
 
     const [thaTrue, setThaTrue]=useState(null);
+
+    const [resultsresults, setResultsResults]=useState([]);
+
+
+    const resHandler=(theInfo)=>{
+
+      setResultsResults(state => [...state,
+        theInfo
+      ]);
+    }
     
 
     
@@ -37,8 +47,7 @@ export default function SurveyResults() {
      useEffect(() => {
       get(child(dbRef, `Users/` + currentUser.uid + `/surveysCreated/${handle}`)).then((snapshot) => {
        if (snapshot.exists()) {
-        // console.log(snapshot.val().open);
-
+      
         if(snapshot.val().open==="true"){
           setThaTrue(true);
         }
@@ -55,6 +64,21 @@ export default function SurveyResults() {
      });
    }, []);
 
+
+   useEffect(() => {
+     firebase.database().ref(`Users/${currentUser.uid}/surveysCreated/${handle}/surveyResults`).once('value', function(snapshot){
+            snapshot.forEach(
+                function(ChildSnapshot){
+              //  console.log(ChildSnapshot.val().form);
+      resHandler(ChildSnapshot.val().form);
+    
+                }
+            );
+        });
+              }, [])
+
+
+
    function closeSurv() {
     var db = firebase.database();
     db.ref(`Users/` + currentUser.uid + `/surveysCreated/${handle}/open`).set("false");
@@ -67,7 +91,23 @@ export default function SurveyResults() {
     document.location.reload();
   }
 
-     console.log(thaTrue);
+  // console.log(resultsresults);
+
+//    resultsresults.map((element,index)=>{
+//     console.log(element[index]);
+// })
+
+function disResults() {
+    resultsresults.map(function (nested) {
+       nested.map(function (element) {
+         console.log(element.answer);
+       return <li>{element.answer}</li>
+    });
+  }); 
+}
+
+
+
 
     return (
         <div>
@@ -86,10 +126,14 @@ export default function SurveyResults() {
               )}
               <br></br> <br></br>
 
-            
-            {Object.keys(surveyResults).map((element)=>{
+            <ol>
+            {/* {Object.keys(surveyResults).map((element)=>{
          return <div> <Link to={`/userSurveyResults/${element}/${handle}`}>{element} </Link><br></br></div>
-       })}
+       })} */}
+                    {/* { resultsresults.map((element,index)=>{
+            return <li key={index}>{element[index].answer}</li>
+  })}   */}{disResults()}
+    </ol> 
         </div>
     )
 }
