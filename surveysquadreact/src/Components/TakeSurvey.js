@@ -138,9 +138,6 @@ const onchange=(index,event)=>{
   const dataHandler = (event) => {
     
     event.preventDefault();
-
-    // need to add breakpoint to end of form here
-
   
     for (let index = 0; index < form.length; index++) {
 
@@ -159,8 +156,8 @@ const onchange=(index,event)=>{
    firebase.database().ref().update(updates);
      }catch(error){console.log(error);}
   
-  //  alert(`Thank you for taking ${handle}'s survey! Your response has been recorded`);
-  //   routeChange();
+   alert(`Thank you for taking ${handle}'s survey! Your response has been recorded`);
+    routeChange();
   }
 
   function radioFunc(index,event) {

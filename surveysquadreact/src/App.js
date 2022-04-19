@@ -30,7 +30,7 @@ function App() {
           <PrivateRoute exact path="/takeSurvey/:surveyName/:handle" component={TakeSurvey}/>
           <PrivateRoute exact path="/mySurveys" component={MySurveys}/>
           <PrivateRoute exact path="/surveyResults/:handle" component={SurveyResults}/>
-          <PrivateRoute exact path="/userSurveyResults/:handle/:another" component={UserSurveyResults}/>
+          {/* <PrivateRoute exact path="/userSurveyResults/:handle/:another" component={UserSurveyResults}/> */}
 
       </div>
     </Router>
