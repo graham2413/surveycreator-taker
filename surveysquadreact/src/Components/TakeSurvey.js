@@ -8,7 +8,7 @@ import firebase from "../config";
 
 export default function TakeSurvey() {
    
-   
+   var   tryer=0;
     const {surveyName,handle} = useParams();
 
     const dbRef = ref(getDatabase());
@@ -111,9 +111,11 @@ const onchange=(index,event)=>{
 
   for (let index = 0; index < form.length; index++) {
 
+
  if(form[index]===null){
   form.splice(index,1)
  }
+
   }
 
   setForm(prev=>{
@@ -137,6 +139,9 @@ const onchange=(index,event)=>{
     
     event.preventDefault();
 
+    // need to add breakpoint to end of form here
+
+  
     for (let index = 0; index < form.length; index++) {
 
       if(form[index]===null){
@@ -154,8 +159,8 @@ const onchange=(index,event)=>{
    firebase.database().ref().update(updates);
      }catch(error){console.log(error);}
   
-   alert(`Thank you for taking ${handle}'s survey! Your response has been recorded`);
-    routeChange();
+  //  alert(`Thank you for taking ${handle}'s survey! Your response has been recorded`);
+  //   routeChange();
   }
 
   function radioFunc(index,event) {
@@ -212,6 +217,10 @@ const onchange=(index,event)=>{
   });console.log(form);
   };
     
+  function saveData(params) {
+    setForm(oldArray => [...oldArray,{answer:"breakpoint"}] );
+    console.log(form);
+  }
 
     return (
         <div>
@@ -244,7 +253,7 @@ const onchange=(index,event)=>{
               }
                        })}
 
-                <input type="submit" />
+                <button onClick={saveData}>Submit Survey</button> <br></br><br></br><br></br>
          </form>
             </div>
             
