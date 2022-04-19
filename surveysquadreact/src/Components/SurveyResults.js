@@ -98,22 +98,26 @@ export default function SurveyResults() {
 // })
 
 function disResults() {
-    resultsresults.map(function (nested) {
-       nested.map(function (element) {
-         console.log(element.answer);
-       return <li>{element.answer}</li>
+
+  return  resultsresults.map(function (nested) {
+      return nested.map(function (element,index) {
+          // console.log(element.answer);
+          if(element.answer==="breakpoint"){
+            index++;
+            return "End of user results"
+          }
+          
+       return <li key={index}>{element.answer}</li>
     });
   }); 
 }
-
-
 
 
     return (
         <div>
             <div><Nav/></div>
             
-            <h1>Users who have taken your survey are below, choose a user to see their answers.</h1><br></br> <br></br>
+            <h1>All of the survey: {handle}'s results are below</h1><br></br> <br></br>
             
             {thaTrue === true? (
 

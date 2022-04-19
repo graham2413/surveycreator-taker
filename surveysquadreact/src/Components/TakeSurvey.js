@@ -52,7 +52,6 @@ useEffect(() => {
 
 firebase.database().ref(`Users/` + handle + `/surveysCreated/${surveyName}/surveyResults`).on('value', (snapData) => {
 
-
    for (let index = 0; index < snapData.numChildren(); index++) {
      
     var key = Object.keys(snapData.val())[index];
@@ -64,6 +63,7 @@ firebase.database().ref(`Users/` + handle + `/surveysCreated/${surveyName}/surve
 })
 
 }, []);
+
 
 useEffect(() => {
   get(child(dbRef, `Users/` + handle + `/surveysCreated/${surveyName}/survey`)).then((snapshot) => {
@@ -101,6 +101,7 @@ useEffect(() => {
 }, []);
 
 
+
 const onchange=(index,event)=>{
   // console.log(form);
   event.preventDefault();
@@ -130,7 +131,10 @@ const onchange=(index,event)=>{
   });console.log(form);
   };
 
+
+
   const dataHandler = (event) => {
+    
     event.preventDefault();
 
     for (let index = 0; index < form.length; index++) {
@@ -139,8 +143,6 @@ const onchange=(index,event)=>{
        form.splice(index,1)
       }
        }
-     console.log(form);
-
 
     var postData={
       form

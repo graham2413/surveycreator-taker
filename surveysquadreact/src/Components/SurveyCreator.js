@@ -31,6 +31,7 @@ function SurveyCreator() {
 
  const dataHandler = (event) => {
     event.preventDefault();
+    
     console.log("Info as follows:",form)   
      
 
@@ -60,7 +61,7 @@ function SurveyCreator() {
 };
 
 const onChange=(index,event)=>{
-
+console.log(form);
 event.preventDefault();
 event.persist();
 
@@ -69,7 +70,7 @@ setForm(prev=>{
 
 if (i!==index){
   return item;
-} console.log(item);
+}
 return{
 ...item,
 [event.target.name]:event.target.value,
