@@ -21,9 +21,10 @@ body {
     .eachTeach{
       color: blue;
       list-style: square;
-      margin-left: 8%;
+      margin-left: 3%;
       display: block;
       text-decoration: none;
+      margin-top: 5px;
     }
     .eachTeach:hover{
       color: pink;
