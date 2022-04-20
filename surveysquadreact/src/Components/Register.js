@@ -4,20 +4,19 @@ import firebase from "../config";
 import { Link } from "react-router-dom";
 import "../CSS/login.css"
 
-
+//register user functionality
 const Register = ({ history }) => {
   const handleSignUp = useCallback(async event => {
     event.preventDefault();
 
     const {full_name, email, password } = event.target.elements;
 
-    // below two added
     const database = firebase.database()
     const auth = firebase.auth()
 
    
     try {
-
+//creates user in auth
    await auth
         .createUserWithEmailAndPassword(email.value, password.value)
          history.push("/")
@@ -33,7 +32,7 @@ const Register = ({ history }) => {
             surveysCreated: 0,
             UID: auth.currentUser.uid
         }         
-            
+            //pushes user to realtime db
           database_ref.child('Users/' + user.uid).set(userData)  
 
     } catch (error) {

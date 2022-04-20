@@ -1,4 +1,4 @@
-import { useHistory, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { getDatabase, ref, child, get } from "firebase/database";
 import React, { useState,useEffect,useContext } from 'react';
 import { AuthContext } from "../Auth";
@@ -8,13 +8,14 @@ import "../CSS/index.css"
 
 function Home() {
   
-  const history = useHistory();
+  //state variables, imports
+
   const dbRef = ref(getDatabase());
 
   const [userNamename, setuserNamename]=useState(null);
   const { currentUser } = useContext(AuthContext);
   
-    
+    // sets current users name
   useEffect(() => {
     get(child(dbRef, `Users/` + currentUser.uid + "/full_name")).then((snapshot) => {
       if (snapshot.exists()) {

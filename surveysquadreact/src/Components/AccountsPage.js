@@ -9,29 +9,30 @@ import { getDatabase, ref, child, get } from "firebase/database";
 
 export default function AccountsPage() {
     
-    const [teachers, setTeachers]=useState([]);
+
+   //state variables, imports
+    const [users, setUsers]=useState([]);
     const [searchTerm, setSearchTerm]=useState('');
     
     
     const dbRef = ref(getDatabase());
 
+    // sets all users to be displayed on screen
     useEffect(() => {
     get(child(dbRef, `Users/`)).then((snapshot) => {
       if (snapshot.exists()) {
   
-         setTeachers(snapshot.val())
+        setUsers(snapshot.val())
          console.log(snapshot.val());
       }
      else {
-        console.log("No teachers exist");
+        console.log("No user exist");
       }
     }).catch((error) => {
       console.error(error);
     });
   }, [])
   
-    
-    
     
     return (
         <div>
@@ -41,11 +42,11 @@ export default function AccountsPage() {
 
 
            <h1>All Users</h1>
-        <input onChange={event => setSearchTerm(event.target.value)} className="searchbar" type="text" placeholder="Search teachers..."/>
+        <input onChange={event => setSearchTerm(event.target.value)} className="searchbar" type="text" placeholder="Search users..."/>
     
           <ul>
 
-       {Object.entries(teachers).filter((val)=>{
+       {Object.entries(users).filter((val)=>{
          if(searchTerm === ""){
         return val;
         

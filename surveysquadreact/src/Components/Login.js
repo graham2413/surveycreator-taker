@@ -4,7 +4,7 @@ import firebase from "../config";
 import { Link } from "react-router-dom";
 import "../CSS/login.css"
 
-
+//login functionality
 const Login = ({ history }) => {
 
   const handleLogin = useCallback(

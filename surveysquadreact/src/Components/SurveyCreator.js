@@ -91,8 +91,6 @@ const handleRemove=(e,index)=>{
 }
 
 
-
-
   return (
 <div>
 <Nav/>
@@ -146,7 +144,6 @@ const handleRemove=(e,index)=>{
   <input type="submit" />
 
 </form>
-
 
 </div>
   );

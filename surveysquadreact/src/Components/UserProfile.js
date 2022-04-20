@@ -51,7 +51,7 @@ get(child(dbRef, `Users/` + handle + `/surveysCreated`)).then((snapshot) => {
     
 
         <h1>All Surveys</h1>
-        <input onChange={event => setSearchTerm(event.target.value)} className="searchbar" type="text" placeholder="Search teachers..."/>
+        <input onChange={event => setSearchTerm(event.target.value)} className="searchbar" type="text" placeholder="Search surveys..."/>
 
         {Object.entries(surveys).filter((val)=>{
          if(searchTerm === ""){

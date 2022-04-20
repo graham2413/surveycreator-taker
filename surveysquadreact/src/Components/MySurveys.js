@@ -13,7 +13,7 @@ export default function MySurveyResults() {
     const [surveyNames, setSurveyNames]=useState([]);
 
 
-
+//sets survey names created by current user
     useEffect(() => {
         get(child(dbRef, `Users/` + currentUser.uid + `/surveysCreated`)).then((snapshot) => {
          if (snapshot.exists()) {

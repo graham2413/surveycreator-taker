@@ -19,3 +19,4 @@ const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
 };
 
 export default PrivateRoute;
+//this componenet allows routes to be private- not accessible unless logged in

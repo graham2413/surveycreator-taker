@@ -28,3 +28,4 @@ export const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
+//this component uses firebase auth to determine state of current user

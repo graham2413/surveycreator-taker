@@ -5,7 +5,7 @@ import "../CSS/index.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Nav(){
-
+//nav component
 return(
   <div>
  <ReactBootStrap.Navbar bg="danger" expand="xl">

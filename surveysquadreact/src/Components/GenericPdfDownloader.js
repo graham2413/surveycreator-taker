@@ -2,6 +2,7 @@ import React from 'react';
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
 
+//componenet to be used to download survey results
 const GenericPdfDownloader = ({rootElementId , downloadFileName}) => {
 
     const downloadPdfDocument = () => {
