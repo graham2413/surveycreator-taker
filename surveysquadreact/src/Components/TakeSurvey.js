@@ -15,6 +15,8 @@ export default function TakeSurvey() {
     const dbRef = ref(getDatabase());
 
     const [thaTrue, setThaTrue]=useState(null);
+    const [vally, setVally]=useState("Move slider");
+
 
     const [surveys,setSurveys] =useState([]);
 
@@ -92,6 +94,8 @@ const onchange=(index,event)=>{
   // console.log(form);
   event.preventDefault();
   event.persist();
+
+  setVally(event.target.value)
 
   setForm(prev=>[...prev,null])
 
@@ -232,7 +236,7 @@ const onchange=(index,event)=>{
                     return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br> <input name="answer" onChange={(e)=>onchange(index,e)} type="text" autoFocus></input> </div>
                 }
                 else if(surveys[index].responses==="Scale"){
-                  return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br> <input id="range" name="answer" onChange={(e)=>onchange(index,e)} type="range" min="0" max="5"  autoFocus></input> <br></br><output></output></div>
+                  return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br> <input value={vally} id="range" name="answer" onChange={(e)=>onchange(index,e)} type="range" min="0" max="5"  autoFocus></input> <br></br>{vally}</div>
               }
                        })}
 
