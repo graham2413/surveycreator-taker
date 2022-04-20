@@ -4,6 +4,8 @@ import {useParams,Link} from "react-router-dom"
 import Nav from './Nav'
 import { AuthContext } from '../Auth';
 import firebase from "../config";
+import GenericPdfDownloader from "./GenericPdfDownloader";
+
 
 export default function SurveyResults() {
 
@@ -48,7 +50,8 @@ export default function SurveyResults() {
       get(child(dbRef, `Users/` + currentUser.uid + `/surveysCreated/${handle}`)).then((snapshot) => {
        if (snapshot.exists()) {
       
-        if(snapshot.val().open==="true"){
+        console.log();
+        if(snapshot.val().open==="true" || snapshot.val().open===true){
           setThaTrue(true);
         }
         else{
@@ -91,11 +94,7 @@ export default function SurveyResults() {
     document.location.reload();
   }
 
-  // console.log(resultsresults);
-
-//    resultsresults.map((element,index)=>{
-//     console.log(element[index]);
-// })
+console.log(thaTrue);
 
 function disResults() {
 
@@ -129,7 +128,13 @@ function disResults() {
           <button onClick={openSurv}>Make survey open</button>           
               )}
               <br></br> <br></br>
+              
 
+              <GenericPdfDownloader 
+          downloadFileName="CustomPdf" 
+          rootElementId="testId" 
+        />
+         <div id="testId"> 
             <ol>
             {/* {Object.keys(surveyResults).map((element)=>{
          return <div> <Link to={`/userSurveyResults/${element}/${handle}`}>{element} </Link><br></br></div>
@@ -138,6 +143,9 @@ function disResults() {
             return <li key={index}>{element[index].answer}</li>
   })}   */}{disResults()}
     </ol> 
+         </div>
+ 
+      
         </div>
     )
 }
