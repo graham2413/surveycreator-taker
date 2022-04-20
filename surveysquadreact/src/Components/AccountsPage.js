@@ -41,9 +41,10 @@ export default function AccountsPage() {
            </div>
 
 
-           <h1>All Users</h1>
+           <h1 className="allUsers">All Users</h1>
+        <div className="centeraligner">
         <input onChange={event => setSearchTerm(event.target.value)} className="searchbar" type="text" placeholder="Search users..."/>
-    
+        </div>
           <ul>
 
        {Object.entries(users).filter((val)=>{

@@ -100,11 +100,10 @@ body {
        align-items: center;  
     }
     .searchbar{
-      margin-left: 10%;
-      margin-bottom: 15px;
-      margin-top: 10px;
+      margin: auto;
+      margin-left: 8%;
+      width: 50%;
     }
-  
   
     @media only screen and (max-width: 765px) {
       .checkcontainer {
@@ -179,3 +178,15 @@ body {
     .addQ{
       text-align: center;
     }
+    .allUsers{
+      margin: auto;
+      margin-top: 5%;
+      width: 50%;
+      text-decoration: underline;
+    }
+
+    .centeraligner{
+      margin-left: 5%;
+      margin-top: 10%;
+    }
+  
