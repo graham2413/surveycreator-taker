@@ -1,4 +1,3 @@
-//Below is my office hours input information component
 import React, { useState, useContext} from 'react';
 import firebase from "../config";
 import { useHistory } from 'react-router-dom';
