@@ -7,8 +7,9 @@ import firebase from "../config";
 
 
 export default function TakeSurvey() {
+
+  //state variables, imports, and routechanges
    
-   var   tryer=0;
     const {surveyName,handle} = useParams();
 
     const dbRef = ref(getDatabase());
@@ -31,7 +32,7 @@ export default function TakeSurvey() {
     }
 
 
-
+//sets survey information so user can take it
     useEffect(() => {
 
    get(child(dbRef, `Users/` + handle + `/surveysCreated/${surveyName}/survey`)).then((snapshot) => {
@@ -47,7 +48,7 @@ export default function TakeSurvey() {
   });
 }, []);
 
-
+//sets whether user can take a survey, whther they have taken it or not
 useEffect(() => {
 
 firebase.database().ref(`Users/` + handle + `/surveysCreated/${surveyName}/surveyResults`).on('value', (snapData) => {
@@ -64,23 +65,8 @@ firebase.database().ref(`Users/` + handle + `/surveysCreated/${surveyName}/surve
 
 }, []);
 
-
-useEffect(() => {
-  get(child(dbRef, `Users/` + handle + `/surveysCreated/${surveyName}/survey`)).then((snapshot) => {
-   if (snapshot.exists()) {
-   //  console.log(snapshot.val());
-    setSurveys(snapshot.val());
- 
-   } else {
-     console.log("No name exists");
-   }
- }).catch((error) => {
-   console.error(error);
- });
-}, []);
-
    
-
+// check whether the survey is open or not
 useEffect(() => {
   get(child(dbRef, `Users/` + handle + `/surveysCreated/${surveyName}/`)).then((snapshot) => {
    if (snapshot.exists()) {
@@ -101,7 +87,7 @@ useEffect(() => {
 }, []);
 
 
-
+// all below deals with setting form data of survey results
 const onchange=(index,event)=>{
   // console.log(form);
   event.preventDefault();
@@ -134,7 +120,7 @@ const onchange=(index,event)=>{
   };
 
 
-
+// handles survey data and pushes to db
   const dataHandler = (event) => {
     
     event.preventDefault();
@@ -159,7 +145,7 @@ const onchange=(index,event)=>{
    alert(`Thank you for taking ${handle}'s survey! Your response has been recorded`);
     routeChange();
   }
-
+//specific to radio button, onchcange
   function radioFunc(index,event) {
      
   event.preventDefault();
@@ -213,7 +199,7 @@ const onchange=(index,event)=>{
   
   });console.log(form);
   };
-    
+    //adds breakpoint at end of form
   function saveData(params) {
     setForm(oldArray => [...oldArray,{answer:"breakpoint"}] );
     console.log(form);

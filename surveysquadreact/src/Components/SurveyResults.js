@@ -14,7 +14,7 @@ export default function SurveyResults() {
 
     const {handle} = useParams();
 
-    const [surveyResults, setSurveyResults]=useState([]);
+    // const [surveyResults, setSurveyResults]=useState([]);
 
     const [thaTrue, setThaTrue]=useState(null);
 
@@ -28,24 +28,22 @@ export default function SurveyResults() {
       ]);
     }
     
-
-    
-    useEffect(() => {
-        get(child(dbRef, `Users/` + currentUser.uid + `/surveysCreated/` + handle + `/surveyResults`)).then((snapshot) => {
-         if (snapshot.exists()) {
+    // useEffect(() => {
+    //     get(child(dbRef, `Users/` + currentUser.uid + `/surveysCreated/` + handle + `/surveyResults`)).then((snapshot) => {
+    //      if (snapshot.exists()) {
         
-          //  console.log(snapshot.val());
-           setSurveyResults(snapshot.val());
+    //       //  console.log(snapshot.val());
+    //        setSurveyResults(snapshot.val());
        
-         } else {
-           console.log("No results exist");
-         }
-       }).catch((error) => {
-         console.error(error);
-       });
-     }, []);
+    //      } else {
+    //        console.log("No results exist");
+    //      }
+    //    }).catch((error) => {
+    //      console.error(error);
+    //    });
+    //  }, []);
 
-
+// check if survey is open or closed
      useEffect(() => {
       get(child(dbRef, `Users/` + currentUser.uid + `/surveysCreated/${handle}`)).then((snapshot) => {
        if (snapshot.exists()) {
@@ -68,6 +66,7 @@ export default function SurveyResults() {
    }, []);
 
 
+//store survey results
    useEffect(() => {
      firebase.database().ref(`Users/${currentUser.uid}/surveysCreated/${handle}/surveyResults`).once('value', function(snapshot){
             snapshot.forEach(
@@ -81,21 +80,21 @@ export default function SurveyResults() {
               }, [])
 
 
-
+//close survey button
    function closeSurv() {
     var db = firebase.database();
     db.ref(`Users/` + currentUser.uid + `/surveysCreated/${handle}/open`).set("false");
     document.location.reload();
    }
 
+//open survey button
    function openSurv() {
     var db = firebase.database();
     db.ref(`Users/` + currentUser.uid + `/surveysCreated/${handle}/open`).set("true");
     document.location.reload();
   }
 
-console.log(thaTrue);
-
+// display survey results
 function disResults() {
 
   return  resultsresults.map(function (nested) {
@@ -133,16 +132,11 @@ function disResults() {
               <GenericPdfDownloader 
           downloadFileName="CustomPdf" 
           rootElementId="testId" 
-        />
+             />
          <div id="testId"> 
             <ol>
-            {/* {Object.keys(surveyResults).map((element)=>{
-         return <div> <Link to={`/userSurveyResults/${element}/${handle}`}>{element} </Link><br></br></div>
-       })} */}
-                    {/* { resultsresults.map((element,index)=>{
-            return <li key={index}>{element[index].answer}</li>
-  })}   */}{disResults()}
-    </ol> 
+              {disResults()}
+             </ol> 
          </div>
  
       

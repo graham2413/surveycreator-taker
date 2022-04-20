@@ -13,7 +13,6 @@ import UserProfile from './Components/UserProfile';
 import TakeSurvey from './Components/TakeSurvey';
 import MySurveys from './Components/MySurveys';
 import SurveyResults from './Components/SurveyResults';
-import UserSurveyResults from './Components/UserSurveyResults';
 
 function App() {
 
@@ -21,6 +20,7 @@ function App() {
     <AuthProvider>
     <Router>
       <div>
+
           <PrivateRoute exact path="/" component={Home}/>
           <Route exact path="/login" component={Login}/>
           <Route exact path="/register" component={Register}/>
@@ -30,7 +30,6 @@ function App() {
           <PrivateRoute exact path="/takeSurvey/:surveyName/:handle" component={TakeSurvey}/>
           <PrivateRoute exact path="/mySurveys" component={MySurveys}/>
           <PrivateRoute exact path="/surveyResults/:handle" component={SurveyResults}/>
-          {/* <PrivateRoute exact path="/userSurveyResults/:handle/:another" component={UserSurveyResults}/> */}
 
       </div>
     </Router>

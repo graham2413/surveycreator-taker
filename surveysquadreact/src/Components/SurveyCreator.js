@@ -9,6 +9,7 @@ import Nav from './Nav';
 
 function SurveyCreator() {
 
+    //state variables, imports, and routechanges
   const history = useHistory();
   const [surveyName, setSurveyName]=useState("");
   
@@ -17,18 +18,20 @@ function SurveyCreator() {
     history.push(path);
   }
 
+  // sets survey name
   function surveyNamer(event) {
     setSurveyName(event.target.value);
     
   }
 
+    //state variables, imports
   const { currentUser } = useContext(AuthContext);
 
   const db = firebase.database();
 
  const [form, setForm]=useState([]);
  
-
+// saves survey creation data nd submits to db
  const dataHandler = (event) => {
     event.preventDefault();
     

@@ -17,8 +17,7 @@ const dbRef = ref(getDatabase());
 
 const [searchTerm, setSearchTerm]=useState('');
 
-
-
+//set user name for profile
 get(child(dbRef, `Users/` + handle + `/full_name`)).then((snapshot) => {
   if (snapshot.exists()) {
     var tryMe = snapshot.val();
@@ -31,6 +30,7 @@ get(child(dbRef, `Users/` + handle + `/full_name`)).then((snapshot) => {
   console.error(error);
 });
 
+//set surveys created by the selected user
 get(child(dbRef, `Users/` + handle + `/surveysCreated`)).then((snapshot) => {
     if (snapshot.exists()) {
         setSurveys(snapshot.val());
@@ -40,10 +40,6 @@ get(child(dbRef, `Users/` + handle + `/surveysCreated`)).then((snapshot) => {
   }).catch((error) => {
     console.error(error);
   });
-
-
-
-
 
   return(
 
