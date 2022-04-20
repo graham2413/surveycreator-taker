@@ -35,9 +35,12 @@ export default function MySurveyResults() {
     return (
         <div>
             <div><Nav/></div>
+            <div className="mySurveyyys">My Surveys</div>
+        <div className="surveyContainerss">
        {Object.keys(surveyNames).map((element)=>{
-         return <div><Link to={`/surveyResults/${element}`}>{element}</Link> <br></br></div>
+         return <div><Link className="eachSurvey" to={`/surveyResults/${element}`}>{element}</Link> <br></br></div>
        })}
+       </div>
             
         </div>
     )

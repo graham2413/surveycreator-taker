@@ -95,9 +95,7 @@ const handleRemove=(e,index)=>{
 <Nav/>
   <br></br>
   <div className="firsttextcont">
-      <h1>Survey Creator</h1>
-      <h2>Format question type as follows -- </h2>
-      <h3>Available question types are (CASE SENSITIVE): Yes/No, freeResponse, and Scale (1-5 scale)</h3>
+      <h1 className="SurveyCreator">Survey Creator</h1> <br></br><br></br>
  </div>
   
 <form onSubmit={dataHandler}>
@@ -105,8 +103,9 @@ const handleRemove=(e,index)=>{
 <div className="surveynamecont">
 <input onChange={surveyNamer} name="surveyname" id="surveyname" placeholder="Survey Name"></input> <br></br><br></br>
 </div>
-
+<div className="addQ" >
 <button onClick={handleAddSlot}>Add Question</button>   <br></br>  <br></br>
+</div>
 {
   form.map((item,index)=>(
  
@@ -140,8 +139,9 @@ const handleRemove=(e,index)=>{
   ))}
 
   <br></br>
-  <input type="submit" />
-
+  <div className="subDiv">
+  <input className="subber" type="submit" />
+  </div>
 </form>
 
 </div>

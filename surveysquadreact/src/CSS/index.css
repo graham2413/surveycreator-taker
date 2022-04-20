@@ -147,3 +147,34 @@ body {
       text-align: center;
       margin-top: 10%;
     }
+    @media only screen and (max-width: 425px) {
+      .AppointmentBlock {
+        width: 75%;
+      }
+    }
+    .mySurveyyys{
+      margin-top: 15px;
+      font-size: 25px;
+      text-align: center;
+      font-weight: 600;
+      text-decoration: underline;
+      margin-bottom: 30px;
+    }
+    .eachSurvey{
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 20px;
+    }
+    .SurveyCreator{
+      text-decoration: underline;
+    }
+    .subber{
+    text-align: center;
+    }
+    .subDiv{
+      margin-top: 30%;
+      text-align: center;
+    }
+    .addQ{
+      text-align: center;
+    }
