@@ -43,7 +43,7 @@ export default function AccountsPage() {
 <div  className="allUsers">   <h1>All Users</h1></div>
         
         <div className="centeraligner">
-        <input onChange={event => setSearchTerm(event.target.value)} className="searchbar" type="text" placeholder="Search users..."/>
+        <input onChange={event => setSearchTerm(event.target.value)} className="searchbar" type="text" placeholder="Search users by UID..."/>
         </div>
           <ul>
 
