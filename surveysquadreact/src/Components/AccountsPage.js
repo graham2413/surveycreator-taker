@@ -35,7 +35,7 @@ export default function AccountsPage() {
   
     
     return (
-      <div className="home">
+      <div className="homer">
            <div>
                <Nav/>
            </div>

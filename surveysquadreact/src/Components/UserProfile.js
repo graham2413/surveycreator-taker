@@ -43,14 +43,14 @@ get(child(dbRef, `Users/` + handle + `/surveysCreated`)).then((snapshot) => {
 
   return(
 
-      <div className="home">
+      <div className="homer">
       
         <Nav/>
        
         <h1 className="teacherthing">{user}'s Profile</h1> <br></br><br></br><br></br>
     
 
-        <h1>All Surveys</h1>
+        <h1 className="allUsers">All Surveys</h1>
         <input onChange={event => setSearchTerm(event.target.value)} className="searchbar" type="text" placeholder="Search surveys..."/>
 
         {Object.entries(surveys).filter((val)=>{

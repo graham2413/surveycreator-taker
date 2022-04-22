@@ -11,6 +11,7 @@ export default function TakeSurvey() {
   //state variables, imports, and routechanges
    
     const {surveyName,handle} = useParams();
+    var testtt=3;
 
     const dbRef = ref(getDatabase());
 
@@ -95,8 +96,6 @@ const onchange=(index,event)=>{
   event.preventDefault();
   event.persist();
 
-  setVally(event.target.value)
-
   setForm(prev=>[...prev,null])
 
   for (let index = 0; index < form.length; index++) {
@@ -125,11 +124,15 @@ const onchange=(index,event)=>{
 
   // all below deals with setting form data of survey results
 const onchangeVally=(index,event)=>{
-  // console.log(form);
+  
   event.preventDefault();
   event.persist();
 
+
+ if(event.target.value == 1 ||event.target.value == 2 ||event.target.value == 3 ||event.target.value == 4 ||event.target.value == 5 ){
+
   setVally(event.target.value)
+}
 
   setForm(prev=>[...prev,null])
 
@@ -186,7 +189,7 @@ const onchangeVally=(index,event)=>{
 //specific to radio button, onchcange
   function radioFunc(index,event) {
      
-  event.preventDefault();
+  // event.preventDefault();
   event.persist();
 
   setForm(prev=>[...prev,null])
@@ -244,7 +247,7 @@ const onchangeVally=(index,event)=>{
   }
 
     return (
-      <div className="home">
+      <div className="homersurvey">
             <div>
                 <Nav/>
             </div>
@@ -264,13 +267,13 @@ const onchangeVally=(index,event)=>{
 
             {surveys.map((element,index)=>{
                 if(surveys[index].responses==="Yes/No"){
-               return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br> <div onChange={(e)=>radioFunc(index,e)}> <input type="radio" value="Yes" name="answer" /> Yes  <input type="radio" value="No" name="answer" /> No</div></div>
+               return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br> <div onChange={(e)=>radioFunc(index,e)}> <input type="radio" value="Yes" name={index}  /> Yes  <input type="radio" value="No" name={index}  /> No</div></div>
                 }
                 else if(surveys[index].responses==="freeResponse"){
-                    return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br> <input name="answer" onChange={(e)=>onchange(index,e)} type="text" autoFocus></input> </div>
+                    return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br> <input name={index}  onChange={(e)=>onchange(index,e)} type="text" autoFocus></input> </div>
                 }
                 else if(surveys[index].responses==="Scale"){
-                  return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br> <input value={vally} id="range" name="answer" onChange={(e)=>onchangeVally(index,e)} type="range" min="0" max="5"  autoFocus></input> <br></br>{vally}</div>
+                  return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br> <input value={vally} id="range" name={index} onChange={(e)=>onchangeVally(index,e)} type="range" min="0" max="5"  autoFocus></input> <br></br>{vally}</div>
               }
                        })}
 

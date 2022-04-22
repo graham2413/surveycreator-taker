@@ -91,7 +91,7 @@ const handleRemove=(e,index)=>{
 
 
   return (
-<div className="home">
+<div className="homer">
 <Nav/>
   <br></br>
   <div className="firsttextcont">

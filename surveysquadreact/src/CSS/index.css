@@ -99,7 +99,7 @@ body {
        align-items: center;  
     }
     .searchbar{
-      margin-left: 8%;
+      margin-left: 5%;
       width: 200px;
     }
   
@@ -179,8 +179,9 @@ body {
     .allUsers{
   margin-left: 5%;
       margin-top: 5%;
-      width: 30%;
+      width: 100%;
       text-decoration: underline;
+      margin-bottom: 5%;
     }
 
     .centeraligner{
@@ -190,5 +191,13 @@ body {
 
     .home{
       background-color: rgb(193, 214, 227);
+      /* height: 100vh; */
+    }
+    .homer{
+      background-color: rgb(193, 214, 227);
       height: 100vh;
+    }
+    .homersurvey{
+      background-color: rgb(193, 214, 227);
+      height: 300vh;
     }

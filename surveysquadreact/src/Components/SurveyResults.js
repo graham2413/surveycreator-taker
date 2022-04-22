@@ -104,15 +104,14 @@ function disResults() {
             index++;
             return "End of user results"
           }
-          
-       return <li key={index}>{element.answer}</li>
+       return <li key={index}>{element[index]}</li>
     });
   }); 
 }
 
 
     return (
-        <div className="home">
+        <div className="homer">
             <div><Nav/></div>
             
             <h1>All of the survey: {handle}'s results are below</h1><br></br> <br></br>

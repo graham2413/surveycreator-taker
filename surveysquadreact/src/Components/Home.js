@@ -31,7 +31,7 @@ function Home() {
 
   return (
 
-    <div className="home">
+    <div className="homer">
      <Nav/>
         <div className="bgcolor">
         
