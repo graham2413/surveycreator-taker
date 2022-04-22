@@ -33,7 +33,7 @@ function Home() {
 
     <div className="home">
      <Nav/>
-        <div>
+        <div className="bgcolor">
         
           <br></br>
           <h1 className="welcomeCSS">Welcome to Survey Squad Home, {userNamename}</h1>

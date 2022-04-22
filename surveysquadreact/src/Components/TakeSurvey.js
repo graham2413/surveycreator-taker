@@ -210,7 +210,7 @@ const onchange=(index,event)=>{
   }
 
     return (
-        <div>
+      <div className="home">
             <div>
                 <Nav/>
             </div>

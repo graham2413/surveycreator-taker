@@ -33,7 +33,7 @@ export default function MySurveyResults() {
     
 
     return (
-        <div>
+      <div className="home">
             <div><Nav/></div>
             <div className="mySurveyyys">My Surveys</div>
         <div className="surveyContainerss">

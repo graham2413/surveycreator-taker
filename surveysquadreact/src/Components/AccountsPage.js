@@ -35,13 +35,13 @@ export default function AccountsPage() {
   
     
     return (
-        <div>
+      <div className="home">
            <div>
                <Nav/>
            </div>
 
-
-           <h1 className="allUsers">All Users</h1>
+<div  className="allUsers">   <h1>All Users</h1></div>
+        
         <div className="centeraligner">
         <input onChange={event => setSearchTerm(event.target.value)} className="searchbar" type="text" placeholder="Search users..."/>
         </div>

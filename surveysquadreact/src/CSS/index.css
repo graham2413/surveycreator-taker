@@ -20,11 +20,10 @@ body {
     }
     .eachTeach{
       color: blue;
-      list-style: square;
-      margin-left: 3%;
+      margin-left: 6%;
       display: block;
       text-decoration: none;
-      margin-top: 5px;
+      margin-top: 10px;
     }
     .eachTeach:hover{
       color: pink;
@@ -100,9 +99,8 @@ body {
        align-items: center;  
     }
     .searchbar{
-      margin: auto;
       margin-left: 8%;
-      width: 50%;
+      width: 200px;
     }
   
     @media only screen and (max-width: 765px) {
@@ -179,9 +177,9 @@ body {
       text-align: center;
     }
     .allUsers{
-      margin: auto;
+  margin-left: 5%;
       margin-top: 5%;
-      width: 50%;
+      width: 30%;
       text-decoration: underline;
     }
 
@@ -189,4 +187,8 @@ body {
       margin-left: 5%;
       margin-top: 10%;
     }
-  
+
+    .home{
+      background-color: rgb(193, 214, 227);
+      height: 100vh;
+    }

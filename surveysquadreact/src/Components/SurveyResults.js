@@ -112,7 +112,7 @@ function disResults() {
 
 
     return (
-        <div>
+        <div className="home">
             <div><Nav/></div>
             
             <h1>All of the survey: {handle}'s results are below</h1><br></br> <br></br>

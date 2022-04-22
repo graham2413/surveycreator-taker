@@ -43,7 +43,7 @@ get(child(dbRef, `Users/` + handle + `/surveysCreated`)).then((snapshot) => {
 
   return(
 
-      <div>
+      <div className="home">
       
         <Nav/>
        
