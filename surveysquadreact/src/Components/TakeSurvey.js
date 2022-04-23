@@ -4,6 +4,8 @@ import {useParams,useHistory} from "react-router-dom"
 import { getDatabase, ref, child, get } from "firebase/database";
 import { AuthContext } from "../Auth";
 import firebase from "../config";
+import ReactSlider from "react-slider";
+import "../CSS/styles.css"
 
 
 export default function TakeSurvey() {
@@ -16,7 +18,7 @@ export default function TakeSurvey() {
     const dbRef = ref(getDatabase());
 
     const [thaTrue, setThaTrue]=useState(null);
-    const [vally, setVally]=useState("Move slider");
+    const [vally, setVally]=useState("Move slider from 0 to begin.");
 
 
     const [surveys,setSurveys] =useState([]);
@@ -125,14 +127,8 @@ const onchange=(index,event)=>{
   // all below deals with setting form data of survey results
 const onchangeVally=(index,event)=>{
   
-  event.preventDefault();
-  event.persist();
-
-
- if(event.target.value == 1 ||event.target.value == 2 ||event.target.value == 3 ||event.target.value == 4 ||event.target.value == 5 ){
-
-  setVally(event.target.value)
-}
+  // event.preventDefault();
+  // event.persist();
 
   setForm(prev=>[...prev,null])
 
@@ -153,7 +149,7 @@ const onchangeVally=(index,event)=>{
   } 
   return{
   ...item,
-  [event.target.name]:event.target.value,
+  [index]:event,
   }
     });
   
@@ -273,7 +269,15 @@ const onchangeVally=(index,event)=>{
                     return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br> <input name={index}  onChange={(e)=>onchange(index,e)} type="text" autoFocus></input> </div>
                 }
                 else if(surveys[index].responses==="Scale"){
-                  return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br> <input value={vally} id="range" name={index} onChange={(e)=>onchangeVally(index,e)} type="range" min="0" max="5"  autoFocus></input> <br></br>{vally}</div>
+                  return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br>       <ReactSlider
+                  className="horizontal-slider"
+                  thumbClassName="example-thumb"
+                  trackClassName="example-track"
+                  min={0}
+                  max={5}
+                  onChange={(e)=>onchangeVally(index,e)}
+                  renderThumb={(props, state) => <div {...props}>{state.valueNow}</div>}
+                /><br></br>{vally}</div>
               }
                        })}
 
