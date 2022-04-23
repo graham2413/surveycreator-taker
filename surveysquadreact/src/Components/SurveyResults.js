@@ -102,9 +102,9 @@ function disResults() {
           // console.log(element.answer);
           if(element.answer==="breakpoint"){
             index++;
-            return "End of user results"
+            return <p className="blah">End of user results</p>
           }
-       return <li key={index}>{element[index]}</li>
+       return <li className="lisurv" key={index}>{element[index]}</li>
     });
   }); 
 }
@@ -114,16 +114,16 @@ function disResults() {
         <div className="homer">
             <div><Nav/></div>
             
-            <h1>All of the survey: {handle}'s results are below</h1><br></br> <br></br>
+            <h1 className="underIt">All of "{handle}" results are below</h1><br></br> <br></br>
             
             {thaTrue === true? (
 
-              <button onClick={closeSurv}>Make survey closed</button> 
+              <button className="closer" onClick={closeSurv}>Make survey closed</button> 
               ): 
               
             (  
 
-          <button onClick={openSurv}>Make survey open</button>           
+          <button className="opener" onClick={openSurv}>Make survey open</button>           
               )}
               <br></br> <br></br>
               
@@ -133,9 +133,11 @@ function disResults() {
           rootElementId="testId" 
              />
          <div id="testId"> 
-            <ol>
+         <div className="surroundpls">
+            <ol className="resultsbg">
               {disResults()}
              </ol> 
+             </div>
          </div>
  
       
