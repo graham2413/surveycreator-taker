@@ -185,8 +185,6 @@ const onchangeVally=(index,event)=>{
 //specific to radio button, onchcange
   function radioFunc(index,event) {
      
-  // event.preventDefault();
-  event.persist();
 
   setForm(prev=>[...prev,null])
 
