@@ -111,7 +111,7 @@ function disResults() {
 
 
     return (
-        <div className="homer">
+        <div className="homersurvey">
             <div><Nav/></div>
             
             <div className="fixerrerulsts">
