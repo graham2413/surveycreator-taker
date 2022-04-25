@@ -264,7 +264,7 @@ const onchangeVally=(index,event)=>{
                return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br> <div onChange={(e)=>radioFunc(index,e)}> <input type="radio" value="Yes" name={index}  /> Yes  <input type="radio" value="No" name={index}  /> No</div></div>
                 }
                 else if(surveys[index].responses==="freeResponse"){
-                    return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br> <input name={index}  onChange={(e)=>onchange(index,e)} type="text" autoFocus></input> </div>
+                    return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br> <input name={index}  onChange={(e)=>onchange(index,e)} type="text"></input> </div>
                 }
                 else if(surveys[index].responses==="Scale"){
                   return <div key={index+1} className="AppointmentBlock"><h2 className="apps">{index+1}. {surveys[index].questionContent}</h2>   <br></br>       <ReactSlider

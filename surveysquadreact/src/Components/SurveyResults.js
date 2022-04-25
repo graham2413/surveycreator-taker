@@ -19,7 +19,7 @@ export default function SurveyResults() {
     const [thaTrue, setThaTrue]=useState(null);
 
     const [resultsresults, setResultsResults]=useState([]);
-
+    window.scrollTo(0,0);
 
     const resHandler=(theInfo)=>{
 
