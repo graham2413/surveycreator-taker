@@ -114,8 +114,10 @@ function disResults() {
         <div className="homer">
             <div><Nav/></div>
             
+            <div className="fixerrerulsts">
             <h1 className="underIt">All of "{handle}" results are below</h1><br></br> <br></br>
-            
+            </div>
+
             {thaTrue === true? (
 
               <button className="closer" onClick={closeSurv}>Make survey closed</button> 

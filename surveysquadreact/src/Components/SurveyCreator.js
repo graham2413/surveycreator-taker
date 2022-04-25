@@ -91,7 +91,7 @@ const handleRemove=(e,index)=>{
 
 
   return (
-<div className="homer">
+<div className="hhh">
 <Nav/>
   <br></br>
   <div className="firsttextcont">
@@ -143,7 +143,7 @@ const handleRemove=(e,index)=>{
   <input className="subber" type="submit" />
   </div>
 </form>
-
+h
 </div>
   );
 }

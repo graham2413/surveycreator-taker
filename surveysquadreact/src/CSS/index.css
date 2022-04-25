@@ -167,12 +167,10 @@ body {
     .SurveyCreator{
       text-decoration: underline;
     }
-    .subber{
-    text-align: center;
-    }
     .subDiv{
-      margin-top: 30%;
+      margin-top: 10%;
       text-align: center;
+      margin-bottom: 80%;
     }
     .addQ{
       text-align: center;
@@ -193,10 +191,6 @@ body {
     .home{
       background-color: rgb(193, 214, 227);
       /* height: 100vh; */
-    }
-    .homer{
-      background-color: rgb(193, 214, 227);
-      height: 100vh;
     }
     .homersurvey{
       background-color: rgb(193, 214, 227);
@@ -229,7 +223,7 @@ body {
       background-color: white;
       border-radius: 20px;
       padding: 10px;
-    }
+    } 
 
   .closer:hover{
 background-color: red;
@@ -243,3 +237,20 @@ background-color: red;
   .download,.closer,.opener{
     margin-left: 10%;
   }
+  .subber{
+    text-align: center;
+    color: green;
+    /* position: absolute;  */
+    bottom: 0px;
+    }
+     .homer{
+      background-color: rgb(193, 214, 227);
+      height: 100vh;
+    }
+    .hhh{
+      background-color: rgb(193, 214, 227);
+    }
+    .fixerrerulsts{
+      margin: auto;
+      width: 70%;
+    }
