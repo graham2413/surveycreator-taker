@@ -27,8 +27,6 @@ const Register = ({ history }) => {
           var userData = {
             full_name: full_name.value,
             email: email.value,
-            last_login : Date.now(),
-            friendsList: 0,
             surveysCreated: 0,
             UID: auth.currentUser.uid
         }         

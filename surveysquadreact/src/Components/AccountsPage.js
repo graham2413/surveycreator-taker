@@ -3,9 +3,7 @@ import Nav from './Nav'
 import { Link } from "react-router-dom";
 import "../CSS/index.css"
 import { getDatabase, ref, child, get } from "firebase/database";
-
-
-
+import firebase from "../config"
 
 export default function AccountsPage() {
     
@@ -18,21 +16,44 @@ export default function AccountsPage() {
     const dbRef = ref(getDatabase());
 
     // sets all users to be displayed on screen
-    useEffect(() => {
-    get(child(dbRef, `Users/`)).then((snapshot) => {
-      if (snapshot.exists()) {
+  //   useEffect(() => {
+  //   get(child(dbRef, `Users/`)).then((snapshot) => {
+  //     if (snapshot.exists()) {
   
-        setUsers(snapshot.val())
-         console.log(snapshot.val());
-      }
-     else {
-        console.log("No user exist");
-      }
-    }).catch((error) => {
-      console.error(error);
-    });
-  }, [])
+  //       setUsers(snapshot.val())
+  //        console.log(snapshot.val());
+  //     }
+  //    else {
+  //       console.log("No user exist");
+  //     }
+  //   }).catch((error) => {
+  //     console.error(error);
+  //   });
+  // }, [])
+  function handleUser(name, uid) {
+
+    setUsers(prevState => ({
+   
+          ...prevState,
+          [name]: uid
+     }));
+  }
+
+
+  useEffect(() => {
+    firebase.database().ref('Users').once('value', function(snapshot){
+            snapshot.forEach(
+                function(ChildSnapshot){
   
+    
+  handleUser(ChildSnapshot.val().full_name,ChildSnapshot.val().UID);
+          //  teachHand(ChildSnapshot.val().full_name,ChildSnapshot.val().uid);
+        
+                }
+            );
+        });
+              }, [])
+  console.log(users);
     
     return (
       <div className="homer">
@@ -56,8 +77,8 @@ export default function AccountsPage() {
            return val;
          }
        }).map((value, index) => {
-
-        return <Link to={`/userProfile/${value[0]}`} className="eachTeach" key={index}>{value[0]}</Link>
+        console.log(value)
+        return <Link to={`/userProfile/${value[1]}`} className="eachTeach" key={index}>{value[0]}</Link>
         })}
       </ul>
 
